@@ -1,9 +1,20 @@
 {
+  "name": "kchung-radio",
+  "version": 2,
+  "scope": "kchungradio",
+  "regions": ["pdx"],
   "env": {
-    "PGHOST": "@kchung-pg-host",
+    "PGHOST": "@pg-host",
     "PGPORT": "5432",
     "PGDATABASE": "kchung",
     "PGUSER": "archive_api",
-    "PGPASSWORD": "@kchung-radio-archive-pg-password"
-  }
+    "PGPASSWORD": "@pg-password-archive_api"
+  },
+  "routes": [
+    {
+      "src": "/api.*",
+      "headers": { "Cache-Control": "s-maxage=300, max-age=0" },
+      "continue": true
+    }
+  ]
 }
