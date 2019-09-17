@@ -1,5 +1,5 @@
 (function() {
-  var api = "https://kchung-radio-archive-api.now.sh";
+  var api = "/api/archive";
   var s3 = "http://archive.kchungradio.org/";
   var listing = document.getElementById("listing");
   var currentDate;
