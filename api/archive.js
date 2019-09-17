@@ -1,4 +1,4 @@
-const db = require('./db')
+const db = require('./lib/db')
 
 module.exports = async function(req, res) {
   if (req.url.includes('favicon')) return
