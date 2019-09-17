@@ -9,7 +9,7 @@ Welcome to KCHUNG Radio!
 - `git clone git@github.com:kchungradio/kchungradio.org.git`
 - `cd kchungradio.org`
 - `npm install`
-- get `.env` file from another member (optional, if you don't have it the archive won't load)
+- get `.env` file from another member and place it in the `kchungradio.org` directory (optional, if you don't have it the archive won't load)
 - `now dev`
 
 ### To deploy
