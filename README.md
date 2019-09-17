@@ -4,8 +4,7 @@ Welcome to KCHUNG Radio!
 
 ### To run the website and api on your computer
 
-- install [nodejs](https://nodejs.org)
-- install [now cli](https://zeit.co/download): `npm i -g now`
+- make sure you have [git](https://git-scm.com/downloads), [node.js](https://nodejs.org), and [now](https://zeit.co/download) installed
 - `git clone git@github.com:kchungradio/kchungradio.org.git`
 - `cd kchungradio.org`
 - `npm install`
