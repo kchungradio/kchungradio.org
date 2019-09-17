@@ -1,0 +1,76 @@
+html,
+body {
+  font-family: courier, sans-serif;
+  background-color: red;
+  color: white;
+  font-size: 13px;
+  line-height: 17px;
+  letter-spacing: 0px;
+  text-transform: lowercase;
+}
+
+a:link {
+  color: white;
+  text-decoration: none;
+}
+a:visited {
+  color: white;
+  text-decoration: none;
+}
+a:active {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  background: white;
+  color: red;
+}
+a.no-hover:hover {
+  background: red;
+  color: white;
+}
+
+#nav a,
+#nav span {
+  list-style: none;
+  float: left;
+}
+#nav a.menu {
+  display: block;
+  background: red;
+  margin: 0 1px 0 0;
+  text-decoration: none;
+}
+#nav hr {
+  text-align: left;
+  margin-left: 0;
+}
+
+p a:link {
+  text-decoration: underline;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.huge {
+  font-size: 6em;
+  font-weight: 900;
+}
+
+/* chat widget */
+.theme--minimal {
+  color: white;
+}
+
+/* removes icon from google translate */
+img.goog-te-gadget-icon {
+  display: none;
+}
+#google_translate_element {
+  position: absolute;
+  right: 0px;
+}
