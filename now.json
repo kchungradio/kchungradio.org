@@ -15,6 +15,31 @@
       "src": "/api.*",
       "headers": { "Cache-Control": "s-maxage=300, max-age=0" },
       "continue": true
+    },
+    {
+      "src": "/stream2.html",
+      "status": 301,
+      "headers": { "Location": "/stream/2" }
+    },
+    {
+      "src": "/([^/]+).html",
+      "status": 301,
+      "headers": { "Location": "/$1" }
+    },
+    {
+      "src": "/wiki(.*)",
+      "status": 301,
+      "headers": { "Location": "https://wiki.kchungradio.org$1" }
+    },
+    {
+      "src": "/Talking-Show(.*)",
+      "status": 301,
+      "headers": { "Location": "https://talking-show.kchungradio.org$1" }
+    },
+    {
+      "src": "/([^/]+).(jpg|png|ico|svg)",
+      "status": 301,
+      "headers": { "Location": "/img/$1.$2" }
     }
   ]
 }
