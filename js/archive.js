@@ -12,7 +12,7 @@
     getShows(page)
 
     // infinite scroll
-    window.addEventListener('scroll', function(e) {
+    window.addEventListener('scroll', function() {
       var windowBottom = window.scrollY + window.innerHeight
       var listingBottom =
         window.scrollY + listing.getBoundingClientRect().bottom
