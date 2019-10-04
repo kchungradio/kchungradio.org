@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>KCHUNG Radio 1630AM</title>
   <link rel="icon" type="image/png" href="/img/favicon.ico" />
   <link rel="stylesheet" type="text/css" href="/css/style.css" />
   <meta property="og:image" content="/img/kchungforfacebook.jpg" />
+  <style>
+    #instafeed { width: 640px; }
+    .post { margin-bottom: 50px; }
+  </style>
 </head>
-
 <body>
   <a href="/stream" class="no-hover">
     <img src="/img/kchungblood.png" width="150" style="border: 0;" />
@@ -17,6 +19,7 @@
   <br />
 
   <span>broadcasting on 1630 am, chinatown, los angeles</span>
+
   <br />
 
   <div id="nav">
@@ -41,18 +44,43 @@
   <br />
   <br />
 
-  <form id="search-form">
-    <input id="search-input" type="text" />
-    <input type="submit" value="search" />
-  </form>
-  <br />
-  <!-- div to display archive, used in /js/archive.js -->
-  <div id="listing"></div>
-
-  <script src="/js/nospam.js"></script>
-  <script src="https://code.jquery.com/jquery-1.9.0.min.js" integrity="sha256-f6DVw/U4x2+HjgEqw5BZf67Kq/5vudRZuRkljnbF344=" crossorigin="anonymous"></script>
+  <div id="instafeed" />
+  <script src="js/instafeed.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.30.1/date_fns.min.js"></script>
-  <script src="/js/archive.js"></script>
-</body>
+  <script>
+    function convertTime(time) {
+      return dateFns.format(time * 1000, "dddd, MMMM Do, YYYY");
+    }
 
+    var userFeed = new Instafeed({
+      get: 'user',
+      userId: 228617764,
+      template: '<div class="post"><a class="no-hover" href="{{link}}"><img src="{{image}}" /></a><p>{{caption}}</p><a class="time" href="{{link}}">{{model.created_time}}</a></div>',
+      after: function() {
+        // convert to readable times
+        var times = document.getElementsByClassName('time');
+        for (var i = 0; i < times.length; i++) {
+          times[i].innerText = convertTime(times[i].innerText);
+        }
+
+        // add archived posts link
+        var instafeed = document.getElementById("instafeed");
+        var archivedPosts = document.getElementById("archived-posts");
+        if (archivedPosts) archivedPosts.remove();
+        var archiveDiv = document.createElement("div");
+        archiveDiv.id = "archived-posts";
+        var archiveLink = document.createElement("a");
+        archiveLink.setAttribute("href", "https://news.kchungradio.org");
+        archiveLink.setAttribute("target", "_blank");
+        archiveLink.innerText = "archived posts";
+        archiveDiv.appendChild(archiveLink);
+        instafeed.appendChild(archiveDiv);
+      },
+      resolution: 'standard_resolution',
+      clientId: '5cc289ddfbaa42b78af0c6fc0d9f9cb7',
+      accessToken: '228617764.1677ed0.061240d4d3b6432f9471460093821ce4'
+    });
+    userFeed.run();
+  </script>
+</body>
 </html>
