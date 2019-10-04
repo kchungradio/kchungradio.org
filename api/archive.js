@@ -3,14 +3,15 @@ const db = require('./lib/db')
 module.exports = async function(req, res) {
   if (req.url.includes('favicon')) return
 
-  const { limit = 50, page = 0 } = req.query
+  const { limit = 50, page = 0, search = '' } = req.query
 
   const data = await db
     .query(
       `SELECT date, path FROM radio.archive
+       WHERE path ILIKE $3
        ORDER BY date DESC
        LIMIT $1 OFFSET $2`,
-      [limit, page * limit]
+      [limit, page * limit, `%${search}%`]
     )
     .then(data => data.rows)
     .then(rows =>
