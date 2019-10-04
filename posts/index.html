@@ -57,10 +57,24 @@
       userId: 228617764,
       template: '<div class="post"><a class="no-hover" href="{{link}}"><img src="{{image}}" /></a><p>{{caption}}</p><a class="time" href="{{link}}">{{model.created_time}}</a></div>',
       after: function() {
+        // convert to readable times
         var times = document.getElementsByClassName('time');
         for (var i = 0; i < times.length; i++) {
           times[i].innerText = convertTime(times[i].innerText);
         }
+
+        // add archived posts link
+        var instafeed = document.getElementById("instafeed");
+        var archivedPosts = document.getElementById("archived-posts");
+        if (archivedPosts) archivedPosts.remove();
+        var archiveDiv = document.createElement("div");
+        archiveDiv.id = "archived-posts";
+        var archiveLink = document.createElement("a");
+        archiveLink.setAttribute("href", "https://news.kchungradio.org");
+        archiveLink.setAttribute("target", "_blank");
+        archiveLink.innerText = "archived posts";
+        archiveDiv.appendChild(archiveLink);
+        instafeed.appendChild(archiveDiv);
       },
       resolution: 'standard_resolution',
       clientId: '5cc289ddfbaa42b78af0c6fc0d9f9cb7',
