@@ -1,0 +1,13 @@
+{
+  "env": {
+    "browser": true,
+    "jquery": true
+  },
+  "globals": {
+    "dateFns": "readonly"
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:prettier/recommended"
+  ]
+}
