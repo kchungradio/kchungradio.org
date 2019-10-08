@@ -50,11 +50,15 @@
 
     var query = '?page=' + page
     if (search) {
-      query += '&search=' + search.replace(' ', '_')
+      query += '&search='
+      query += search
+        .trim()
+        .replace(/ /g, '_')
+        .replace(/\*/g, '%')
     }
-    console.log(query)
+    var encodedURI = encodeURI(api + query)
 
-    $.get(api + query, function(shows) {
+    $.get(encodedURI, function(shows) {
       removeLoading()
       if (!shows || !shows.length) {
         moreShows = false

@@ -5,6 +5,8 @@ module.exports = async function(req, res) {
 
   const { limit = 50, page = 0, search = '' } = req.query
 
+  console.log({ limit, page, search })
+
   const data = await db
     .query(
       `SELECT date, path FROM radio.archive
