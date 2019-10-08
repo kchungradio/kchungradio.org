@@ -50,7 +50,8 @@
 
     var query = '?page=' + page
     if (search) {
-      query += '&search=' + search.replace(' ', '_')
+      query += '&search='
+      query += search.trim().replace(/ /g, '_')
     }
     console.log(query)
 
