@@ -57,7 +57,6 @@
         .replace(/\*/g, '%')
     }
     var encodedURI = encodeURI(api + query)
-    console.log(encodedURI)
 
     $.get(encodedURI, function(shows) {
       removeLoading()
