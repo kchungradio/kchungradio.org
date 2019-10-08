@@ -56,9 +56,10 @@
         .replace(/ /g, '_')
         .replace(/\*/g, '%')
     }
-    console.log(query)
+    var encodedURI = encodeURI(api + query)
+    console.log(encodedURI)
 
-    $.get(api + query, function(shows) {
+    $.get(encodedURI, function(shows) {
       removeLoading()
       if (!shows || !shows.length) {
         moreShows = false
