@@ -5,7 +5,12 @@ module.exports = async function(req, res) {
 
   const { limit = 50, page = 0, search = '' } = req.query
 
-  console.log({ limit, page, search })
+  // console.log({ limit, page, search })
+
+  const _search = search
+    .trim()
+    .replace(/ /g, '_')
+    .replace(/\*/g, '%')
 
   const data = await db
     .query(
@@ -13,7 +18,7 @@ module.exports = async function(req, res) {
        WHERE path ILIKE $3
        ORDER BY date DESC
        LIMIT $1 OFFSET $2`,
-      [limit, page * limit, `%${search}%`]
+      [limit, page * limit, `%${_search}%`]
     )
     .then(data => data.rows)
     .then(rows =>

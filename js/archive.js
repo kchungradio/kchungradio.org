@@ -50,11 +50,7 @@
 
     var query = '?page=' + page
     if (search) {
-      query += '&search='
-      query += search
-        .trim()
-        .replace(/ /g, '_')
-        .replace(/\*/g, '%')
+      query += '&search=' + search.trim()
     }
     var encodedURI = encodeURI(api + query)
 
