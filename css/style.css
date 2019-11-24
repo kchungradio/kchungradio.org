@@ -29,6 +29,9 @@ a.no-hover:hover {
   background: red;
   color: white;
 }
+p a:link {
+  text-decoration: underline;
+}
 
 #nav a,
 #nav span {
@@ -44,10 +47,6 @@ a.no-hover:hover {
 #nav hr {
   text-align: left;
   margin-left: 0;
-}
-
-p a:link {
-  text-decoration: underline;
 }
 
 .center {
