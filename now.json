@@ -17,11 +17,6 @@
       "continue": true
     },
     {
-      "src": "/stream2.html",
-      "status": 301,
-      "headers": { "Location": "/stream/2" }
-    },
-    {
       "src": "/([^/]+).html",
       "status": 301,
       "headers": { "Location": "/$1" }
