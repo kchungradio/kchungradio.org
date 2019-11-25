@@ -9,7 +9,7 @@ module.exports = async function(req, res) {
 
   const _search = search
     .trim()
-    .replace(/ /g, '_')
+    .replace(/ /g, '%')
     .replace(/\*/g, '%')
 
   const data = await db
