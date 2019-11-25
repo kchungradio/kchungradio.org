@@ -1,5 +1,5 @@
 {
-  "name": "kchung-radio",
+  "name": "kchungradio.org",
   "version": 2,
   "scope": "kchungradio",
   "regions": ["pdx"],
@@ -12,8 +12,12 @@
   },
   "routes": [
     {
-      "src": "/api.*",
-      "headers": { "Cache-Control": "s-maxage=300, max-age=0" },
+      "src": "/api(.*)",
+      "methods": ["GET"],
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "s-maxage=300, max-age=0"
+      },
       "continue": true
     },
     {
