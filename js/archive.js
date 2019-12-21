@@ -11,6 +11,15 @@
 
   // this runs after the DOM has loaded
   $(function() {
+    try {
+      if (!window.location.search) return;
+      const { search: params } = window.location
+
+      if (params.lastIndexOf('?search=', 0) === 0) {
+        search = params.replace('?search=', '').split('-').join( ' ')
+      }
+    } catch (e) {}
+
     getShows(page, search)
 
     // infinite scroll
@@ -44,7 +53,7 @@
     listing.innerHTML = ''
   }
 
-  function getShows(page, search) {
+  function getShows(page, search = '') {
     gettingShows = true
     addLoadingToListing()
 
@@ -53,6 +62,10 @@
       query += '&search=' + search.trim()
     }
     var encodedURI = encodeURI(api + query)
+
+    if (search !== '') {
+      history.pushState({}, '', `?search=${slugify(search)}`)
+    }
 
     $.get(encodedURI, function(shows) {
       removeLoading()
@@ -109,5 +122,14 @@
   function removeLoading() {
     var loading = document.getElementById('loading')
     loading.remove()
+  }
+
+  function slugify(text) {
+    return text.toString().toLowerCase()
+      .replace(/\s+/g, '-')           // Replace spaces with -
+      .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+      .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+      .replace(/^-+/, '')             // Trim - from start of text
+      .replace(/-+$/, '');            // Trim - from end of text
   }
 })()
