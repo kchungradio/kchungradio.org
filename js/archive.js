@@ -53,7 +53,7 @@
     listing.innerHTML = ''
   }
 
-  function getShows(page, search = '') {
+  function getShows(page, search) {
     gettingShows = true
     addLoadingToListing()
 
