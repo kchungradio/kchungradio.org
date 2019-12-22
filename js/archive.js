@@ -15,7 +15,7 @@
       //  if `search` query param exists, filter the results and add query to search input
       const params = window.location.search
       if (params.lastIndexOf('?search=', 0) === 0) {
-        search = decodeURIComponent(params.replace('?search=', ''))
+        search = unslugify(decodeURIComponent(params.replace('?search=', '')))
         document.getElementById('search-input').value = search
       }
     } catch (e) {}
@@ -64,7 +64,7 @@
     var encodedURI = encodeURI(api + query)
 
     if (search !== '') {
-      history.pushState({}, '', `?search=${encodeURIComponent(search)}`)
+      history.pushState({}, '', `?search=${encodeURIComponent(slugify(search))}`)
     }
 
     $.get(encodedURI, function(shows) {
@@ -122,5 +122,13 @@
   function removeLoading() {
     var loading = document.getElementById('loading')
     loading.remove()
+  }
+
+  function slugify(text) {
+    return text.toString().trim().toLowerCase().replace(/\s/g, '-')
+  }
+
+  function unslugify(text) {
+    return text.split('-').join(' ')
   }
 })()
