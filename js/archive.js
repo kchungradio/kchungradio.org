@@ -11,6 +11,14 @@
 
   // this runs after the DOM has loaded
   $(function() {
+    //  if `search` query param exists,
+    //  filter the results and add query to search input
+    var params = window.location.search
+    if (params.lastIndexOf('?search=', 0) === 0) {
+      search = unslugify(decodeURIComponent(params.replace('?search=', '')))
+      document.getElementById('search-input').value = search
+    }
+
     getShows(page, search)
 
     // infinite scroll
@@ -46,15 +54,13 @@
 
   function getShows(page, search) {
     gettingShows = true
+
     addLoadingToListing()
+    addSearchToUrl(search)
 
-    var query = '?page=' + page
-    if (search) {
-      query += '&search=' + search.trim()
-    }
-    var encodedURI = encodeURI(api + query)
+    var apiUrl = api + createApiParams(page, search)
 
-    $.get(encodedURI, function(shows) {
+    $.get(apiUrl, function(shows) {
       removeLoading()
       if (!shows || !shows.length) {
         moreShows = false
@@ -106,8 +112,38 @@
     listing.appendChild(loadingDiv)
   }
 
+  function addSearchToUrl(search) {
+    if (search) {
+      history.pushState(
+        {},
+        '',
+        '?search=' + encodeURIComponent(slugify(search))
+      )
+    }
+  }
+
+  function createApiParams(page, search) {
+    var params = '?page=' + encodeURIComponent(page)
+    if (search) {
+      params += '&search=' + encodeURIComponent(search.trim())
+    }
+    return params
+  }
+
   function removeLoading() {
     var loading = document.getElementById('loading')
     loading.remove()
+  }
+
+  function slugify(text) {
+    return text
+      .toString()
+      .trim()
+      .toLowerCase()
+      .replace(/\s/g, '-')
+  }
+
+  function unslugify(text) {
+    return text.split('-').join(' ')
   }
 })()
