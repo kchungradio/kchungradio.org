@@ -54,15 +54,9 @@
 
   function getShows(page, search) {
     gettingShows = true
-    addLoadingToListing()
 
-    if (search) {
-      history.pushState(
-        {},
-        '',
-        '?search=' + encodeURIComponent(slugify(search))
-      )
-    }
+    addLoadingToListing()
+    addSearchToUrl(search)
 
     $.get(api + createApiParams(page, search), function(shows) {
       removeLoading()
@@ -114,6 +108,16 @@
     var loadingContent = document.createTextNode('Loading...')
     loadingDiv.appendChild(loadingContent)
     listing.appendChild(loadingDiv)
+  }
+
+  function addSearchToUrl(search) {
+    if (search) {
+      history.pushState(
+        {},
+        '',
+        '?search=' + encodeURIComponent(slugify(search))
+      )
+    }
   }
 
   function createApiParams(page, search) {
