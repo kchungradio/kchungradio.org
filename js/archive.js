@@ -63,7 +63,11 @@
     var encodedURI = encodeURI(api + query)
 
     if (search !== '') {
-      history.pushState({}, '', '?search=' + encodeURIComponent(slugify(search)))
+      history.pushState(
+        {},
+        '',
+        '?search=' + encodeURIComponent(slugify(search))
+      )
     }
 
     $.get(encodedURI, function(shows) {
@@ -124,7 +128,11 @@
   }
 
   function slugify(text) {
-    return text.toString().trim().toLowerCase().replace(/\s/g, '-')
+    return text
+      .toString()
+      .trim()
+      .toLowerCase()
+      .replace(/\s/g, '-')
   }
 
   function unslugify(text) {
