@@ -58,7 +58,9 @@
     addLoadingToListing()
     addSearchToUrl(search)
 
-    $.get(api + createApiParams(page, search), function(shows) {
+    var apiUrl = api + createApiParams(page, search)
+
+    $.get(apiUrl, function(shows) {
       removeLoading()
       if (!shows || !shows.length) {
         moreShows = false
