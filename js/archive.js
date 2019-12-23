@@ -56,13 +56,7 @@
     gettingShows = true
     addLoadingToListing()
 
-    var query = '?page=' + page
     if (search) {
-      query += '&search=' + search.trim()
-    }
-    var encodedURI = encodeURI(api + query)
-
-    if (search !== '') {
       history.pushState(
         {},
         '',
@@ -70,7 +64,7 @@
       )
     }
 
-    $.get(encodedURI, function(shows) {
+    $.get(api + createApiParams(page, search), function(shows) {
       removeLoading()
       if (!shows || !shows.length) {
         moreShows = false
@@ -120,6 +114,14 @@
     var loadingContent = document.createTextNode('Loading...')
     loadingDiv.appendChild(loadingContent)
     listing.appendChild(loadingDiv)
+  }
+
+  function createApiParams(page, search) {
+    var params = '?page=' + encodeURIComponent(page)
+    if (search) {
+      params += '&search=' + encodeURIComponent(search.trim())
+    }
+    return params
   }
 
   function removeLoading() {
