@@ -11,14 +11,13 @@
 
   // this runs after the DOM has loaded
   $(function() {
-    try {
-      //  if `search` query param exists, filter the results and add query to search input
-      const params = window.location.search
-      if (params.lastIndexOf('?search=', 0) === 0) {
-        search = unslugify(decodeURIComponent(params.replace('?search=', '')))
-        document.getElementById('search-input').value = search
-      }
-    } catch (e) {}
+    //  if `search` query param exists,
+    //  filter the results and add query to search input
+    var params = window.location.search
+    if (params.lastIndexOf('?search=', 0) === 0) {
+      search = unslugify(decodeURIComponent(params.replace('?search=', '')))
+      document.getElementById('search-input').value = search
+    }
 
     getShows(page, search)
 
