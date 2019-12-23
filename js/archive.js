@@ -63,7 +63,7 @@
     var encodedURI = encodeURI(api + query)
 
     if (search !== '') {
-      history.pushState({}, '', `?search=${encodeURIComponent(slugify(search))}`)
+      history.pushState({}, '', '?search=' + encodeURIComponent(slugify(search)))
     }
 
     $.get(encodedURI, function(shows) {
