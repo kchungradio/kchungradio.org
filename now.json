@@ -12,6 +12,11 @@
   },
   "routes": [
     {
+      "src": "/",
+      "status": 307,
+      "headers": { "Location": "/stream" }
+    },
+    {
       "src": "/api(.*)",
       "methods": ["GET"],
       "headers": {
