@@ -5,6 +5,7 @@
     "pretty": "prettier --check '**/*.js'"
   },
   "dependencies": {
+    "eslint-plugin-react": "^7.19.0",
     "next": "^9.3.1",
     "pg": "^7.18.2",
     "react": "^16.13.1",
