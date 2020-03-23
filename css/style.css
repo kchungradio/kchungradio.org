@@ -44,6 +44,22 @@ p a:link {
   flex-direction: column;
 }
 
+nav a,
+nav span {
+  list-style: none;
+  float: left;
+}
+nav a.menu {
+  display: block;
+  background: red;
+  margin: 0 1px 0 0;
+  text-decoration: none;
+}
+nav hr {
+  text-align: left;
+  margin-left: 0;
+}
+
 /* -------------------------------------------------------------------------- */
 /* Navbar */
 
