@@ -67,7 +67,7 @@ const Navbar = () => (
         return (
           <>
             <a href={href}>{title}</a>
-            {!last && <span style={{ margin: '0 5px' }}>|</span>}
+            {!last && <span style={{ margin: '0 8px' }}>|</span>}
           </>
         )
       })}
