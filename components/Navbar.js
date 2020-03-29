@@ -5,8 +5,10 @@ import Link from 'next/link'
 function Navbar() {
   return (
     <>
-      <Link href="/" className="no-hover">
-        <img src="/img/kchungblood.png" width="150" style={{ border: 0 }} />
+      <Link href="/">
+        <a className="no-hover">
+          <img src="/img/kchungblood.png" width="150" style={{ border: 0 }} />
+        </a>
       </Link>
       <br />
       <br />
@@ -14,18 +16,18 @@ function Navbar() {
       <br />
       <nav>
         <hr width="1038" color="white" />
-        <NavLink href="/stream" title="live stream" />
-        <NavLink href="/schedule" title="schedule" />
-        <NavLink href="/archive" title="archive" />
-        <NavLink href="/email" title="email" />
-        <NavLink href="/mailinglist" title="mailing list" />
-        <NavLink href="/participate" title="participate" />
-        <NavLink href="/donate" title="donate" />
-        <NavLink href="https://www.facebook.com/kchungradio" title="f" />
-        <NavLink href="https://www.twitter.com/kchungradio" title="t" />
-        <NavLink href="https://www.instagram.com/kchungradio" title="i" />
-        <NavLink href="https://wiki.kchungradio.org" title="wiki" />
-        <NavLink href="https://kchung.bigcartel.com" title="store" last />
+        <NavLink href="/stream">live stream</NavLink>
+        <NavLink href="/schedule">schedule</NavLink>
+        <NavLink href="/archive">archive</NavLink>
+        <NavLink href="/email">email</NavLink>
+        <NavLink href="/mailinglist">mailing list</NavLink>
+        <NavLink href="/participate">participate</NavLink>
+        <NavLink href="/donate">donate</NavLink>
+        <NavLink href="https://www.facebook.com/kchungradio" external>f</NavLink>
+        <NavLink href="https://www.twitter.com/kchungradio" external>t</NavLink>
+        <NavLink href="https://www.instagram.com/kchungradio" external>i</NavLink>
+        <NavLink href="https://wiki.kchungradio.org" external>wiki</NavLink>
+        <NavLink href="https://kchung.bigcartel.com" external last>store</NavLink>
         <br />
         <hr width="1038" color="white" />
       </nav>
@@ -35,18 +37,34 @@ function Navbar() {
   )
 }
 
-function NavLink({ href, title, last }) {
+function NavLink({ href, children, external, last }) {
+  let link
+  if (external) {
+    link = (
+      <a href={href} target="_blank" rel="noopener noreferrer">
+        {children}
+      </a>
+    )
+  } else {
+    link = (
+      <Link href={href}>
+        <a>{children}</a>
+      </Link>
+    )
+  }
+
   return (
     <>
-      <Link href={href}>{title}</Link>
+      {link}
       {!last && <span style={{ margin: '0 8px' }}>|</span>}
     </>
   )
 }
 
 NavLink.propTypes = {
-  href: PropTypes.string,
-  title: PropTypes.string,
+  href: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  external: PropTypes.bool,
   last: PropTypes.bool
 }
 
