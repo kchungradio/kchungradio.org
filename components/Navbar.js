@@ -1,82 +1,52 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-const links = [
-  {
-    title: 'live stream',
-    href: '/stream'
-  },
-  {
-    title: 'schedule',
-    href: '/schedule'
-  },
-  {
-    title: 'archive',
-    href: '/archive'
-  },
-  {
-    title: 'email',
-    href: 'mailto:contact@kchungradio.org'
-  },
-  {
-    title: 'mailing list',
-    href: '/mailinglist'
-  },
-  {
-    title: 'participate',
-    href: '/participate'
-  },
-  {
-    title: 'donate',
-    href: '/donate'
-  },
-  {
-    title: 'f',
-    href: 'https://www.facebook.com/kchungradio'
-  },
-  {
-    title: 't',
-    href: 'https://www.twitter.com/kchungradio'
-  },
-  {
-    title: 'i',
-    href: 'https://www.instagram.com/kchungradio'
-  },
-  {
-    title: 'wiki',
-    href: 'https://wiki.kchungradio.org'
-  },
-  {
-    title: 'store',
-    href: 'https://kchung.bigcartel.com'
-  }
-]
-
-const Navbar = () => (
-  <>
-    <a href="/" className="no-hover">
-      <img src="/img/kchungblood.png" width="150" style={{ border: 0 }} />
-    </a>
-    <br />
-    <br />
-    <span>broadcasting on 1630 am, chinatown, los angeles</span>
-    <br />
-    <nav>
-      <hr width="1038" color="white" />
-      {links.map(({ href, title }, idx) => {
-        const last = links.length === idx + 1
-        return (
-          <>
-            <a href={href}>{title}</a>
-            {!last && <span style={{ margin: '0 8px' }}>|</span>}
-          </>
-        )
-      })}
+function Navbar() {
+  return (
+    <>
+      <a href="/" className="no-hover">
+        <img src="/img/kchungblood.png" width="150" style={{ border: 0 }} />
+      </a>
       <br />
-      <hr width="1038" color="white" />
-    </nav>
-    <br />
-    <br />
-  </>
-)
+      <br />
+      <span>broadcasting on 1630 am, chinatown, los angeles</span>
+      <br />
+      <nav>
+        <hr width="1038" color="white" />
+        <NavLink href="/stream" title="live stream" />
+        <NavLink href="/schedule" title="schedule" />
+        <NavLink href="/archive" title="archive" />
+        <NavLink href="/email" title="email" />
+        <NavLink href="/mailinglist" title="mailing list" />
+        <NavLink href="/participate" title="participate" />
+        <NavLink href="/donate" title="donate" />
+        <NavLink href="https://www.facebook.com/kchungradio" title="f" />
+        <NavLink href="https://www.twitter.com/kchungradio" title="t" />
+        <NavLink href="https://www.instagram.com/kchungradio" title="i" />
+        <NavLink href="https://wiki.kchungradio.org" title="wiki" />
+        <NavLink href="https://kchung.bigcartel.com" title="store" last />
+        <br />
+        <hr width="1038" color="white" />
+      </nav>
+      <br />
+      <br />
+    </>
+  )
+}
+
+function NavLink({ href, title, last }) {
+  return (
+    <>
+      <a href={href}>{title}</a>
+      {!last && <span style={{ margin: '0 8px' }}>|</span>}
+    </>
+  )
+}
+
+NavLink.propTypes = {
+  href: PropTypes.string,
+  title: PropTypes.string,
+  last: PropTypes.bool
+}
 
 export default Navbar
