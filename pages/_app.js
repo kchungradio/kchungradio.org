@@ -7,7 +7,7 @@ import Navbar from '../components/Navbar'
 
 import '../css/style.css'
 
-const App = ({ Component, pageProps }) => {
+function App({ Component, pageProps }) {
   return (
     <>
       <Head>
