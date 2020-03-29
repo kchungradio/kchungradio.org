@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Link from 'next/link'
 
 function Navbar() {
   return (
     <>
-      <a href="/" className="no-hover">
+      <Link href="/" className="no-hover">
         <img src="/img/kchungblood.png" width="150" style={{ border: 0 }} />
-      </a>
+      </Link>
       <br />
       <br />
       <span>broadcasting on 1630 am, chinatown, los angeles</span>
@@ -37,7 +38,7 @@ function Navbar() {
 function NavLink({ href, title, last }) {
   return (
     <>
-      <a href={href}>{title}</a>
+      <Link href={href}>{title}</Link>
       {!last && <span style={{ margin: '0 8px' }}>|</span>}
     </>
   )
