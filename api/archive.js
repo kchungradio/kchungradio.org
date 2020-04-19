@@ -16,7 +16,7 @@ module.exports = async function(req, res) {
     .query(
       `SELECT date, path FROM radio.archive
        WHERE path ILIKE $3
-       ORDER BY date DESC
+       ORDER BY date DESC, path
        LIMIT $1 OFFSET $2`,
       [limit, page * limit, `%${_search}%`]
     )
