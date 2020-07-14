@@ -55,16 +55,17 @@
 
       <div class="metadata">
         <div>now playing: </div>
-        <script type="text/javascript" src="https://cdn.voscast.com/stats/display.js?key=905c19fb7741145b136c112251646e4e&stats=songtitle"></script>
-        <script type="text/javascript" src="https://cdn.voscast.com/stats/display.js?key=905c19fb7741145b136c112251646e4e&stats=servertitle"></script>
+        <!-- divs to display show metadata, used in /js/stream.js -->
+        <div id="trackName"></div>
+        <div id="showName"></div>
       </div>
 
       <br />
 
-      <p><a href="/stream2">click here for stream 2</a></p>
+      <p><a href="/stream2">not working? click here to try stream 2</a></p>
 
       <audio class="player" id="player" preload="none">
-        <source src="http://s2.voscast.com:9208/;&type=mp3" type="audio/mp3">
+        <source src="https://kchungradio.out.airtime.pro/kchungradio_a" type="audio/mp3">
         Your browser does not support the audio element.
       </audio>
     </div>
@@ -80,7 +81,6 @@
       data-custom-css="https://www.kchungradio.org/css/style.css"
       style="width:600px; height:400px;"
     ></div>
-    <script async src="https://tlk.io/embed.js"></script>
   </div>
 
   <br />
@@ -88,7 +88,9 @@
 
   <script src="https://code.jquery.com/jquery-1.9.0.min.js" integrity="sha256-f6DVw/U4x2+HjgEqw5BZf67Kq/5vudRZuRkljnbF344=" crossorigin="anonymous"></script>
   <script src="/js/nospam.js"></script>
+  <script src="/js/stream.js"></script>
   <script src="/js/play.js"></script>
+  <script src="https://tlk.io/embed.js"></script>
 </body>
 
 </html>
