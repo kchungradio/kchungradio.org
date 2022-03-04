@@ -23,11 +23,21 @@ function Navbar() {
         <NavLink href="/mailinglist">mailing list</NavLink>
         <NavLink href="/participate">participate</NavLink>
         <NavLink href="/donate">donate</NavLink>
-        <NavLink href="https://www.facebook.com/kchungradio" external>f</NavLink>
-        <NavLink href="https://www.twitter.com/kchungradio" external>t</NavLink>
-        <NavLink href="https://www.instagram.com/kchungradio" external>i</NavLink>
-        <NavLink href="https://wiki.kchungradio.org" external>wiki</NavLink>
-        <NavLink href="https://kchung.bigcartel.com" external last>store</NavLink>
+        <NavLink href="https://www.facebook.com/kchungradio" external>
+          f
+        </NavLink>
+        <NavLink href="https://www.twitter.com/kchungradio" external>
+          t
+        </NavLink>
+        <NavLink href="https://www.instagram.com/kchungradio" external>
+          i
+        </NavLink>
+        <NavLink href="https://wiki.kchungradio.org" external>
+          wiki
+        </NavLink>
+        <NavLink href="https://kchung.bigcartel.com" external last>
+          store
+        </NavLink>
         <br />
         <hr width="1038" color="white" />
       </nav>
@@ -65,7 +75,7 @@ NavLink.propTypes = {
   href: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   external: PropTypes.bool,
-  last: PropTypes.bool
+  last: PropTypes.bool,
 }
 
 export default Navbar
