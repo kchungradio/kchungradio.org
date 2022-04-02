@@ -2,10 +2,15 @@
 
 import React from 'react'
 import Head from 'next/head'
+import { config } from '@fortawesome/fontawesome-svg-core'
 
 import Navbar from '../components/Navbar'
 
+import '@fortawesome/fontawesome-svg-core/styles.css'
+
 import '../css/style.css'
+
+config.autoAddCss = false
 
 function App({ Component, pageProps }) {
   return (
