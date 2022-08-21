@@ -1,11 +1,14 @@
 ;(function() {
   var liveInfoUrl = 'https://kchungradio.airtime.pro/api/live-info-v2'
+
   var showNameEl = document.getElementById('showName')
+  var trackNameEl = document.getElementById('trackName')
 
   // this runs after the DOM has loaded
   $(function() {
     $.get(liveInfoUrl, function(liveInfo) {
       var showNameText
+      var trackNameText
 
       if (
         liveInfo &&
@@ -15,17 +18,20 @@
       ) {
         showNameText = liveInfo.shows.current.name
         showNameEl.innerText = showNameText
-      } else if (
+      }
+
+      if (
         liveInfo &&
+        liveInfo.shows &&
+        liveInfo.shows.current &&
+        liveInfo.shows.current.auto_dj &&
         liveInfo.tracks &&
         liveInfo.tracks.current &&
         liveInfo.tracks.current.metadata &&
         liveInfo.tracks.current.metadata.filepath
       ) {
-        showNameText = liveInfo.tracks.current.metadata.filepath
-        showNameEl.innerText = showNameText
-      } else {
-        showNameEl.innerText = 'kchung radio is offline...'
+        trackNameText = liveInfo.tracks.current.metadata.filepath
+        trackNameEl.innerText = trackNameText
       }
     })
   })
