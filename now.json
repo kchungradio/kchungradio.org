@@ -1,14 +1,6 @@
 {
   "version": 2,
   "scope": "kchungradio",
-  "regions": ["pdx"],
-  "env": {
-    "PGHOST": "@pg-host",
-    "PGPORT": "5432",
-    "PGDATABASE": "kchung",
-    "PGUSER": "archive_api",
-    "PGPASSWORD": "@pg-password-archive_api"
-  },
   "routes": [
     {
       "src": "/",
