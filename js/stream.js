@@ -12,19 +12,6 @@
 
       if (
         liveInfo &&
-        liveInfo.shows &&
-        liveInfo.shows.current &&
-        liveInfo.shows.current.name
-      ) {
-        showNameText = liveInfo.shows.current.name
-        showNameEl.innerText = showNameText
-      }
-
-      if (
-        liveInfo &&
-        liveInfo.shows &&
-        liveInfo.shows.current &&
-        liveInfo.shows.current.auto_dj &&
         liveInfo.tracks &&
         liveInfo.tracks.current &&
         liveInfo.tracks.current.metadata &&
@@ -32,6 +19,14 @@
       ) {
         trackNameText = liveInfo.tracks.current.metadata.filepath
         trackNameEl.innerText = trackNameText
+      } else if (
+        liveInfo &&
+        liveInfo.shows &&
+        liveInfo.shows.current &&
+        liveInfo.shows.current.name
+      ) {
+        showNameText = liveInfo.shows.current.name
+        showNameEl.innerText = showNameText
       }
     })
   })
