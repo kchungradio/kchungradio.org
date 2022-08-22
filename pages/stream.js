@@ -1,7 +1,9 @@
 import React, { useRef, useState } from 'react'
 import Link from 'next/link'
 import Script from 'next/script'
+import useSWR from 'swr'
 
+import jsonFetcher from '../swr/jsonFetcher'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons'
 
@@ -19,6 +21,14 @@ function StreamPage() {
     setIsPlaying(true)
   }
 
+  const { data: liveInfo } = useSWR(
+    'https://kchungradio.airtime.pro/api/live-info-v2',
+    jsonFetcher
+  )
+  const showMetadata =
+    liveInfo?.tracks?.current?.metadata?.filepath ||
+    liveInfo?.shows?.current?.name
+
   return (
     <div>
       <div>
@@ -33,6 +43,13 @@ function StreamPage() {
             </span>
           )}
         </span>
+      </div>
+
+      <br />
+
+      <div>
+        <div>now playing: </div>
+        <div>{showMetadata}</div>
       </div>
 
       <br />

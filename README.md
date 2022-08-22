@@ -7,13 +7,13 @@ Welcome to KCHUNG Radio!
 - make sure you have these installed:
   - [git](https://git-scm.com/downloads)
   - [node.js](https://nodejs.org)
-  - [vercel](https://vercel.com/docs/cli)
 - in your terminal:
   - `git clone https://github.com/kchungradio/kchungradio.org.git`
   - `cd kchungradio.org`
   - `npm install`
   - OPTIONAL: Get the aws secrets and put in a `.env` file or in `.envrc.local` if you use `direnv`. This is only needed if you want to connect to the archive.
-  - `vercel dev`
+  - `npm run dev`
+- visit http://localhost:3000 in your browser
 
 ### Deploys
 
