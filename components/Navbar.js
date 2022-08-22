@@ -7,7 +7,14 @@ function Navbar() {
     <>
       <Link href="/">
         <a className="no-hover">
-          <img src="/img/kchungblood.png" width="150" style={{ border: 0 }} />
+          <picture>
+            <img
+              src="/img/kchungblood.png"
+              alt="KCHUNG logo"
+              width="150"
+              style={{ border: 0 }}
+            />
+          </picture>
         </a>
       </Link>
       <br />

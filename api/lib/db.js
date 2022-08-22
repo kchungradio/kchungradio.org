@@ -1,7 +1,7 @@
-const pg = require('pg')
+import pg from 'pg'
 
 const pool = new pg.Pool()
 
-module.exports = {
-  query: (text, params) => pool.query(text, params)
+export function query(text, params) {
+  return pool.query(text, params)
 }
