@@ -1,6 +1,6 @@
 ## kchungradio.org
 
-Welcome to KCHUNG Radio! 
+Welcome to KCHUNG Radio!
 
 ### Local Development
 
