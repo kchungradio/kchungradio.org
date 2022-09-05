@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   const searchWild = search.trim().replace(/ /g, '%').replace(/\*/g, '%')
 
   const data = await query(
-    `SELECT date, path
+    `SELECT id, date, path
      FROM radio.archive
      WHERE path ILIKE $3
      ORDER BY date DESC
