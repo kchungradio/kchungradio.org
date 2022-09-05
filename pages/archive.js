@@ -9,16 +9,22 @@ import jsonFetcher from '../swr/jsonFetcher'
 const s3 = 'http://archive.kchungradio.org/'
 
 function ArchivePage() {
+  const [searchInput, setSearchInput] = useState('')
+  const [search, setSearch] = useState('')
   const [hasNextPage, setHasNextPage] = useState(true)
 
   const { data, error, setSize, isValidating } = useSWRInfinite(
-    (index) => `api/archive?page=${index}`,
+    (index) => `api/archive?page=${index}&search=${search}`,
     jsonFetcher,
     {
+      revalidateIfStale: false,
+      revalidateOnFocus: false,
+      revalidateFirstPage: false,
+      revalidateOnReconnect: false,
       onSuccess: function (data) {
         // if no more data, stop loading
         const lastData = data[data.length - 1]
-        if (!lastData?.length) {
+        if (lastData && !lastData.length) {
           setHasNextPage(false)
         }
       },
@@ -85,8 +91,35 @@ function ArchivePage() {
     )
   })
 
+  function resetList() {
+    setHasNextPage(true)
+  }
+
+  function handleSearchInputChange(event) {
+    const searchInput = event.target.value
+    setSearchInput(searchInput)
+  }
+
+  function handleSearchButtonClick(event) {
+    event.preventDefault()
+    event.stopPropagation()
+    setSearch(searchInput)
+    resetList()
+  }
+
   return (
     <div>
+      <form onSubmit={handleSearchButtonClick}>
+        <input
+          value={searchInput}
+          onInput={handleSearchInputChange}
+          style={{ marginRight: 8 }}
+        />
+        <button type="submit">search</button>
+      </form>
+
+      <br />
+
       <div>{showsByDateContent}</div>
       {isValidating && <div>Loading...</div>}
       <div ref={infiniteRef} />
