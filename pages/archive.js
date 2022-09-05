@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
-import useSWRInfinite from 'swr/infinite'
+import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import { format, parseISO } from 'date-fns'
+import useSWRInfinite from 'swr/infinite'
 import useInfiniteScroll from 'react-infinite-scroll-hook'
 import 'intersection-observer' // polyfill for IE11
 
@@ -9,9 +10,15 @@ import jsonFetcher from '../swr/jsonFetcher'
 const s3 = 'http://archive.kchungradio.org/'
 
 function ArchivePage() {
+  const router = useRouter()
   const [searchInput, setSearchInput] = useState('')
   const [search, setSearch] = useState('')
   const [hasNextPage, setHasNextPage] = useState(true)
+
+  useEffect(() => {
+    setSearchInput(router.query.search ?? '')
+    setSearch(router.query.search ?? '')
+  }, [router.query])
 
   const { data, error, setSize, isValidating } = useSWRInfinite(
     (index) => `api/archive?page=${index}&search=${search}`,
@@ -104,6 +111,11 @@ function ArchivePage() {
     event.preventDefault()
     event.stopPropagation()
     setSearch(searchInput)
+    if (searchInput) {
+      router.push(`?search=${searchInput}`)
+    } else {
+      router.push('')
+    }
     resetList()
   }
 
