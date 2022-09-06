@@ -6,6 +6,7 @@ import useInfiniteScroll from 'react-infinite-scroll-hook'
 import 'intersection-observer' // polyfill for IE11
 
 import jsonFetcher from '../swr/jsonFetcher'
+import { slugify, unslugify } from '../lib/slugify'
 
 const s3 = 'http://archive.kchungradio.org/'
 
@@ -16,12 +17,24 @@ function ArchivePage() {
   const [hasNextPage, setHasNextPage] = useState(true)
 
   useEffect(() => {
-    setSearchInput(router.query.search ?? '')
-    setSearch(router.query.search ?? '')
+    const querySearch = router.query.search
+    let search
+    if (querySearch) {
+      search = unslugify(decodeURIComponent(querySearch))
+    }
+    setSearchInput(search ?? '')
+    setSearch(search ?? '')
   }, [router.query])
 
   const { data, error, setSize, isValidating } = useSWRInfinite(
-    (index) => `api/archive?page=${index}&search=${search}`,
+    (index) => {
+      let url = `api/archive?page=${index}`
+      if (search) {
+        const urlSafeSearch = encodeURIComponent(search)
+        url += `&search=${urlSafeSearch}`
+      }
+      return url
+    },
     jsonFetcher,
     {
       revalidateIfStale: false,
@@ -112,7 +125,8 @@ function ArchivePage() {
     event.stopPropagation()
     setSearch(searchInput)
     if (searchInput) {
-      router.push(`?search=${searchInput}`)
+      const urlSafeSearch = encodeURIComponent(slugify(searchInput))
+      router.push(`?search=${urlSafeSearch}`)
     } else {
       router.push('')
     }
