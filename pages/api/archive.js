@@ -1,4 +1,4 @@
-import { query } from '../../db/db'
+import { query } from './_lib/db'
 
 export default async function handler(req, res) {
   if (req.url.includes('favicon')) return
