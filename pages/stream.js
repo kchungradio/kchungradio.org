@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react'
 import Link from 'next/link'
-import Script from 'next/script'
 import useSWR from 'swr'
 
 import jsonFetcher from '../swr/jsonFetcher'
@@ -66,14 +65,15 @@ function StreamPage() {
       <br />
       <br />
 
-      <div
-        id="tlkio"
-        data-channel="kchung"
-        data-theme="theme--minimal"
-        data-custom-css="https://www.kchungradio.org/css/style.css"
-        style={{ width: '600px', height: '400px' }}
-      />
-      <Script src="https://tlk.io/embed.js" />
+      <div id="tlkio" style={{ width: '600px', height: '400px' }}>
+        <iframe
+          src="https://embed.tlk.io/kchung?custom_css_path=https://www.kchungradio.org/css/style.css&amp;theme=theme--minimal"
+          width="100%"
+          height="100%"
+          frameBorder="0"
+          style={{ marginBottom: -8 }}
+        ></iframe>
+      </div>
     </div>
   )
 }
