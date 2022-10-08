@@ -26,6 +26,7 @@
       ) {
         trackNameText = liveInfo.tracks.current.metadata.filepath
         trackNameEl.innerText = trackNameText
+        showNameEl.innerText = ''
       } else if (
         liveInfo &&
         liveInfo.shows &&
@@ -34,6 +35,7 @@
       ) {
         showNameText = liveInfo.shows.current.name
         showNameEl.innerText = showNameText
+        trackNameEl.innerText = ''
       }
     })
   })
@@ -41,6 +43,7 @@
   playButtonPublic.click(function(event) {
     event.preventDefault()
     showNameEl.innerText = 'Live from the Geffen Contemporary MOCA'
+    trackNameEl.innerText = ''
   })
 
   // this runs after the DOM has loaded
