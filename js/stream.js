@@ -55,6 +55,9 @@
           showNameEl.innerText = showNameText
         }
       })
+    } else {
+      trackNameEl.innerText = null
+      showNameEl.innerText = null
     }
   })
 })()
