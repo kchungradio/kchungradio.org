@@ -30,8 +30,23 @@
   width: 310px;
 }
 
+.play-buttons-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.play-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .play-pause {
   margin-top: 0px;
+}
+
+.play-pause-public {
+  margin: 0px 60px;
 }
 
 .metadata {
