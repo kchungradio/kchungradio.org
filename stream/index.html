@@ -44,13 +44,30 @@
 
   <div class="app">
     <div class="kchung">
-      <div class="play-pause">
-        <a href="" class="play-button no-hover">
-          <i class="fa fa-play big-icon" aria-hidden="true"></i>
-        </a>
-        <a href="" class="pause-button hidden no-hover">
-          <i class="fa fa-pause big-icon" aria-hidden="true"></i>
-        </a>
+      <div class="play-buttons-container">
+        <div class="play-button-container">
+          <span class="player-label">radio stream</span>
+          <div class="play-pause">
+            <a href="" class="play-button no-hover">
+              <i class="fa fa-play big-icon" aria-hidden="true"></i>
+            </a>
+            <a href="" class="pause-button hidden no-hover">
+              <i class="fa fa-pause big-icon" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+  
+        <div class="play-button-container">
+          <span class="player-label">public stream</span>
+          <div class="play-pause-public">
+            <a href="" class="play-button-public no-hover">
+              <i class="fa fa-play big-icon" aria-hidden="true"></i>
+            </a>
+            <a href="" class="pause-button-public hidden no-hover">
+              <i class="fa fa-pause big-icon" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
       </div>
 
       <div class="metadata">
@@ -66,6 +83,11 @@
 
       <audio class="player" id="player" preload="none">
         <source src="https://kchungradio.out.airtime.pro/kchungradio_a" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+
+      <audio class="player-public" id="player-public" preload="none">
+        <source src="http://s9.voscast.com:7376/;" type="audio/mp3">
         Your browser does not support the audio element.
       </audio>
     </div>
