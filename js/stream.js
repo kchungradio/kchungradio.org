@@ -1,5 +1,6 @@
 ;(function() {
   var liveInfoUrl = 'https://kchungradio.airtime.pro/api/live-info-v2'
+  // Visit URL below to understand SHOUTcast's metadata html response format
   var publicInfoUrl = 'http://s9.voscast.com:7376/7.html'
 
   var showNameEl = document.getElementById('showName')
