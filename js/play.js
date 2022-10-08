@@ -6,6 +6,17 @@ var pauseButton = $('.pause-button')
 var playButtonPublic = $('.play-button-public')
 var pauseButtonPublic = $('.pause-button-public')
 
+var streamURL = 'http://s9.voscast.com:7376/;'
+
+audioPublic.addEventListener('play', function() {
+  $('#player-public').append(
+    '<source id="source-dynamic" src="' + streamURL + '" type="audio/mpeg">'
+  )
+  audioPublic.addEventListener('pause', function() {
+    $('#source-dynamic').remove()
+  })
+})
+
 playButton.click(function(event) {
   event.preventDefault()
   play()
