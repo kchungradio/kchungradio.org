@@ -1,4 +1,5 @@
 {
+  "name": "kchungradio.org",
   "scripts": {
     "lint": "eslint .",
     "pretty": "prettier --check '**/*.js'"
