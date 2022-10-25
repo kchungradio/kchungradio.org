@@ -56,8 +56,7 @@ p a:link {
 }
 
 #main {
-  margin-left: auto;
-  margin-right: auto;
+  margin: 1em auto;
   width: 80%;
 }
 
@@ -101,6 +100,10 @@ p a:link {
   grid-area: chatbox;
   margin: 0 auto;
   width: 100%;
+}
+
+#archive {
+  text-align: center;
 }
 
 /* chat widget */
