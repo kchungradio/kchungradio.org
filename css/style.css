@@ -10,7 +10,6 @@ body {
   color: white;
   font-size: 1em;
   font-weight: bold;
-  line-height: 17px;
   letter-spacing: 0px;
   text-transform: lowercase;
 }
@@ -143,7 +142,7 @@ img.goog-te-gadget-icon {
 /* Stream Player */
 
 .big-icon {
-  font-size: 5em;
+  font-size: 3em;
 }
 
 .hidden {
