@@ -4,115 +4,106 @@
 <head>
   <title>KCHUNG Radio 1630AM</title>
   <link rel="icon" type="image/png" href="/img/favicon.ico" />
-  <link rel="stylesheet" type="text/css" href="/css/style.css" />
   <link rel="stylesheet" type="text/css" href="/fonts/fa/css/font-awesome.css">
-  <link rel="stylesheet" type="text/css" href="/css/play.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
   <meta property="og:image" content="/img/kchungforfacebook.jpg" />
+  <meta charset="utf-8">
 </head>
 
 <body>
-  <a href="/" class="no-hover">
-    <img src="/img/kchungblood.png" width="150" style="border: 0;" />
-  </a>
+  <div class="header">
+    <a href="/" class="no-hover">
+      <img src="/img/kchungblood.png" width="175em" style="border: 0;" />
+    </a>
 
-  <br />
-  <br />
-
-  <span>broadcasting on 1630 am, chinatown, los angeles</span>
-  <br />
-
+    <br />
+    <span>broadcasting on 1630 am, chinatown, los angeles</span>
+  </div>
   <div id="nav">
-    <hr width="1038" color="white" />
+    <hr width="100%" color="white" />
     <a href="/stream">live stream</a><span>&nbsp|&nbsp</span>
     <a href="/schedule">schedule</a><span>&nbsp|&nbsp</span>
     <a href="/archive">archive</a><span>&nbsp|&nbsp</span>
-    <a href="javascript:noSpam('contact','kchungradio.org')" onfocus="this.blur();">e-mail</a><span>&nbsp|&nbsp</span>
     <a href="/mailinglist">mailing list</a><span>&nbsp|&nbsp</span>
     <a href="/participate">participate</a><span>&nbsp|&nbsp</span>
     <a href="/donate">donate</a><span>&nbsp|&nbsp</span>
+    <a href="https://kchung.bigcartel.com">store</a><span>&nbsp|&nbsp</span>
     <a href="https://www.facebook.com/kchungradio">f</a><span>&nbsp</span>
     <a href="https://www.twitter.com/kchungradio">t</a><span>&nbsp</span>
-    <a href="https://www.instagram.com/kchungradio">i</a><span>&nbsp|&nbsp</span>
-    <a href="https://wiki.kchungradio.org">wiki</a><span>&nbsp|&nbsp</span>
-    <a href="https://kchung.bigcartel.com">store</a>
+    <a href="https://www.instagram.com/kchungradio">i</a>
     <br />
-    <hr width="1038" color="white" />
+    <hr width="100%" color="white" />
   </div>
-
-  <br />
-  <br />
-
-  <div class="app">
-    <div class="kchung">
-      <div class="play-buttons-container">
-        <div class="play-button-container">
-          <span class="player-label">kchung</span>
-          <div class="play-pause">
-            <a href="" class="play-button no-hover">
-              <i class="fa fa-play big-icon" aria-hidden="true"></i>
-            </a>
-            <a href="" class="pause-button hidden no-hover">
-              <i class="fa fa-pause big-icon" aria-hidden="true"></i>
-            </a>
-          </div>
+  <div id="main">
+    <div class="stream">
+      <div class="player-main">
+        <div>
+          <a href="" class="play-button no-hover">
+            <i class="fa fa-play big-icon" aria-hidden="true"></i>
+          </a>
+          <a href="" class="pause-button hidden no-hover">
+            <i class="fa fa-pause big-icon" aria-hidden="true"></i>
+          </a>
         </div>
+	<div class="now-player">
+          <span class="player-label">kchung main</span>
+          <div id="showName"></div>
+          <div id="trackName"></div>
+	</div>
+      </div>
   
-        <div class="play-button-container">
-          <span class="player-label">kchung public</span>
-          <div class="play-pause-public">
-            <a href="" class="play-button-public no-hover">
-              <i class="fa fa-play big-icon" aria-hidden="true"></i>
-            </a>
-            <a href="" class="pause-button-public hidden no-hover">
-              <i class="fa fa-pause big-icon" aria-hidden="true"></i>
-            </a>
-          </div>
+      <div class="player-public">
+	<div class="now-player">
+          <div id="showName"></div>
+          <div id="trackName"></div>
+	</div>
+        <div>
+          <a href="" class="play-button-public no-hover">
+            <i class="fa fa-play big-icon" aria-hidden="true"></i>
+          </a>
+          <a href="" class="pause-button-public hidden no-hover">
+            <i class="fa fa-pause big-icon" aria-hidden="true"></i>
+          </a>
         </div>
+	<div class="now-player">
+          <span class="player-label">kchung public</span>
+          <div id="showName">Live from the Geffen Contemporary MOCA</div>
+          <div id="trackName"></div>
+	</div>
       </div>
 
       <div class="metadata">
-        <div>now playing: </div>
-        <!-- divs to display show metadata, used in /js/stream.js -->
-        <div id="showName"></div>
-        <div id="trackName"></div>
+        <div><a href="/stream2">not working? click here to try stream 2.</a></div>
+	<div>If the public stream isn't working in chrome, try using firefox or safari instead.</div>
       </div>
 
-      <br />
+      <div class="chatbox">
+        <!-- chat -->
+        <div id="tlkio"
+          data-channel="kchung"
+          data-theme="theme--minimal"
+          data-custom-css="https://www.kchungradio.org/css/style.css"
+          style="height:400px;"
+        ></div>
+      </div>
 
-      <p><a href="/stream2">not working? click here to try stream 2.</a> If the public stream isn't working in chrome, try using firefox or safari instead.</p>
-
-      <audio class="player" id="player" preload="none">
-        <source src="https://kchungradio.out.airtime.pro/kchungradio_a" type="audio/mp3">
-        Your browser does not support the audio element.
-      </audio>
-
-      <audio class="player-public" id="player-public" preload="none">
-        <source src="http://s9.voscast.com:7376/;" type="audio/mp3">
-        Your browser does not support the audio element.
-      </audio>
     </div>
+
+    <audio id="player-main" preload="none">
+      <source src="https://kchungradio.out.airtime.pro/kchungradio_a" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
+
+    <audio id="player-public" preload="none">
+      <source src="http://s9.voscast.com:7376/;" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
+
+    <script src="https://code.jquery.com/jquery-1.9.0.min.js" integrity="sha256-f6DVw/U4x2+HjgEqw5BZf67Kq/5vudRZuRkljnbF344=" crossorigin="anonymous"></script>
+    <script src="/js/nospam.js"></script>
+    <script src="/js/stream.js"></script>
+    <script src="/js/play.js"></script>
+    <script src="https://tlk.io/embed.js"></script>
   </div>
-
-  <div>
-    <br />
-    <br />
-    <!-- chat -->
-    <div id="tlkio"
-      data-channel="kchung"
-      data-theme="theme--minimal"
-      data-custom-css="https://www.kchungradio.org/css/style.css"
-      style="width:600px; height:400px;"
-    ></div>
-  </div>
-
-  <br />
-  <br />
-
-  <script src="https://code.jquery.com/jquery-1.9.0.min.js" integrity="sha256-f6DVw/U4x2+HjgEqw5BZf67Kq/5vudRZuRkljnbF344=" crossorigin="anonymous"></script>
-  <script src="/js/nospam.js"></script>
-  <script src="/js/stream.js"></script>
-  <script src="/js/play.js"></script>
-  <script src="https://tlk.io/embed.js"></script>
 </body>
-
 </html>

@@ -1,9 +1,15 @@
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent; /* For some Androids */
+}
+
 html,
 body {
   font-family: courier, sans-serif;
   background-color: red;
   color: white;
-  font-size: 13px;
+  font-size: 1em;
+  font-weight: bold;
   line-height: 17px;
   letter-spacing: 0px;
   text-transform: lowercase;
@@ -49,20 +55,58 @@ p a:link {
   margin-left: 0;
 }
 
-.center {
+#main {
   margin-left: auto;
   margin-right: auto;
+  width: 80%;
+}
+
+.stream {
+  display: grid;
+  grid-template-areas:
+    'player-main player-public'
+    'metadata metadata'
+    'chatbox chatbox';
+  gap: 10px;
+  padding: 10px;
+}
+
+.stream > div {
+  padding: 1em 0;
+  font-size: 1.5em;
+}
+
+.player-main {
+  grid-area: player-main;
+  text-align: center;
+  line-height: 1em;
+}
+
+.player-public {
+  grid-area: player-public;
+  text-align: center;
+  line-height: 1em;
+}
+
+.metadata {
+  grid-area: metadata;
   text-align: center;
 }
 
-.huge {
-  font-size: 6em;
-  font-weight: 900;
+.metadata > div {
+  font-size: 0.75em;
+}
+
+.chatbox {
+  grid-area: chatbox;
+  margin: 0 auto;
+  width: 100%;
 }
 
 /* chat widget */
 .theme--minimal {
   color: white;
+  width: 100%;
 }
 
 /* removes icon from google translate */
@@ -72,4 +116,13 @@ img.goog-te-gadget-icon {
 #google_translate_element {
   position: absolute;
   right: 0px;
+}
+
+.big-icon {
+  font-size: 5em;
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
 }
