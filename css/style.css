@@ -60,12 +60,15 @@ p a:link {
   width: 80%;
 }
 
+/* -------------------------------------------------------------------------- */
+/* Stream Page Main Grid */
+
 .stream {
   display: grid;
   grid-template-areas:
-    'player-main player-public'
-    'metadata metadata'
-    'chatbox chatbox';
+    'player'
+    'metadata'
+    'chatbox';
   gap: 10px;
   padding: 10px;
 }
@@ -75,16 +78,8 @@ p a:link {
   font-size: 1.5em;
 }
 
-.player-main {
-  grid-area: player-main;
-  text-align: center;
-  line-height: 1em;
-}
-
-.player-public {
-  grid-area: player-public;
-  text-align: center;
-  line-height: 1em;
+.player {
+  grid-area: player;
 }
 
 .metadata {
@@ -102,8 +97,21 @@ p a:link {
   width: 100%;
 }
 
-#archive {
+.player-inner-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.player-main {
   text-align: center;
+  line-height: 1em;
+  margin: 0 auto;
+}
+
+.player-public {
+  text-align: center;
+  line-height: 1em;
+  margin: 0 auto;
 }
 
 /* chat widget */
@@ -111,6 +119,16 @@ p a:link {
   color: white;
   width: 100%;
 }
+
+/* -------------------------------------------------------------------------- */
+/* Archive Page */
+
+#archive {
+  text-align: center;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Google Translate */
 
 /* removes icon from google translate */
 img.goog-te-gadget-icon {
@@ -120,6 +138,9 @@ img.goog-te-gadget-icon {
   position: absolute;
   right: 0px;
 }
+
+/* -------------------------------------------------------------------------- */
+/* Stream Player */
 
 .big-icon {
   font-size: 5em;
