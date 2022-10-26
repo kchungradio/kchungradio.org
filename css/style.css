@@ -79,6 +79,12 @@ p a:link {
 
 .player {
   grid-area: player;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-bottom: 1em;
+  width: 60%;
 }
 
 .metadata {
@@ -96,21 +102,22 @@ p a:link {
   width: 100%;
 }
 
-.player-inner-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
 .player-main {
-  text-align: center;
   line-height: 1em;
-  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .player-public {
-  text-align: center;
   line-height: 1em;
-  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.location {
+  margin-left: auto;
 }
 
 /* chat widget */
@@ -143,6 +150,7 @@ img.goog-te-gadget-icon {
 
 .big-icon {
   font-size: 3em;
+  margin-right: 0.5em;
 }
 
 .hidden {

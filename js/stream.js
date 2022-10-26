@@ -35,13 +35,6 @@
       trackNameEl.innerText = ''
     }
   })
-
-  playButtonPublic.click(function(event) {
-    event.preventDefault()
-    showNameEl.innerText = 'Live from the Geffen Contemporary MOCA'
-    trackNameEl.innerText = ''
-  })
-
   // this runs after the DOM has loaded
   // $(function() {})
 })()
