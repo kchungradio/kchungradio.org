@@ -59,6 +59,36 @@ p a:link {
   width: 80%;
 }
 
+@media screen and (max-width: 420px) {
+  #main {
+    margin: 1em auto;
+    width: 100%;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Mailchimp Mailinglist Form */
+
+#mc_embed_signup {
+  background: white;
+  color: red;
+  clear: left;
+  font: 14px Helvetica,Arial,sans-serif;
+  width: 45%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 420px) {
+  #mc_embed_signup {
+    background: white;
+    color: red;
+    clear: left;
+    font: 14px Helvetica,Arial,sans-serif;
+    width: 100%;
+    margin: 0;
+  }
+}
+
 /* -------------------------------------------------------------------------- */
 /* Stream Page Main Grid */
 
