@@ -1,6 +1,7 @@
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent; /* For some Androids */
+  box-sizing: border-box;
 }
 
 html,
@@ -38,21 +39,46 @@ p a:link {
   text-decoration: underline;
 }
 
-#nav a,
-#nav span {
-  list-style: none;
-  float: left;
+#banner {
+  display: flex;
+  flex-direction: column;
 }
-#nav a.menu {
-  display: block;
-  background: red;
-  margin: 0 1px 0 0;
-  text-decoration: none;
+
+/* -------------------------------------------------------------------------- */
+/* Navbar */
+
+#nav {
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+  border-width: 2px;
+  display: flex;
+  flex-wrap: wrap;
 }
-#nav hr {
-  text-align: left;
-  margin-left: 0;
+
+#nav > * {
+  margin-right: 1em;
+  white-space: nowrap;
 }
+
+@media screen and (max-width: 420px) {
+  #nav > * {
+    margin-right: 0;
+    width: 50%;
+  }
+
+  #nav {
+    flex-direction: row;
+  }
+
+  #left, #right {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Main */
 
 #main {
   margin: 1em auto;
@@ -148,6 +174,10 @@ p a:link {
 
 .location {
   margin-left: auto;
+}
+
+#trackName, #showName {
+  overflow-wrap: anywhere;
 }
 
 /* chat widget */
