@@ -1,10 +1,16 @@
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent; /* For some Androids */
+  box-sizing: border-box;
+}
+
 html,
 body {
   font-family: courier, sans-serif;
   background-color: red;
   color: white;
-  font-size: 13px;
-  line-height: 17px;
+  font-size: 1em;
+  font-weight: bold;
   letter-spacing: 0px;
   text-transform: lowercase;
 }
@@ -33,32 +39,130 @@ p a:link {
   text-decoration: underline;
 }
 
-#nav a,
-#nav span {
-  list-style: none;
-  float: left;
-}
-#nav a.menu {
-  display: block;
-  background: red;
-  margin: 0 1px 0 0;
-  text-decoration: none;
-}
-#nav hr {
-  text-align: left;
-  margin-left: 0;
+#banner {
+  display: flex;
+  flex-direction: column;
 }
 
-.center {
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
+/* -------------------------------------------------------------------------- */
+/* Navbar */
+
+#nav {
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+  border-width: 2px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.huge {
-  font-size: 6em;
-  font-weight: 900;
+#nav > * {
+  margin-right: 1em;
+  white-space: nowrap;
 }
+
+@media screen and (max-width: 420px) {
+  #nav > * {
+    margin-right: 0;
+    width: 50%;
+  }
+
+  #nav {
+    flex-direction: row;
+  }
+
+  #left, #right {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Main */
+
+#main {
+  margin: 1em auto;
+  width: 80%;
+}
+
+@media screen and (max-width: 420px) {
+  #main {
+    margin: 1em auto;
+    width: 100%;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Mailchimp Mailinglist Form */
+
+#mc_embed_signup {
+  background: white;
+  color: red;
+  clear: left;
+  font: 14px Helvetica,Arial,sans-serif;
+  width: 45%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 420px) {
+  #mc_embed_signup {
+    background: white;
+    color: red;
+    clear: left;
+    font: 14px Helvetica,Arial,sans-serif;
+    width: 100%;
+    margin: 0;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Stream Player */
+
+.player {
+  width: 310px;
+}
+
+.play-buttons-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.play-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.play-pause {
+  margin-top: 0px;
+}
+
+.play-pause-public {
+  margin: 0px 60px;
+}
+
+.metadata {
+  margin-top: 50px;
+  font-family: courier, sans-serif;
+  color: #fff;
+  font-size: inherit;
+  line-height: 17px;
+  letter-spacing: 0px;
+  text-transform: lowercase;
+}
+
+.big-icon {
+  font-size: 3em;
+  margin-right: 0.5em;
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/* External Widgets */
 
 /* chat widget */
 .theme--minimal {
@@ -69,6 +173,7 @@ p a:link {
 img.goog-te-gadget-icon {
   display: none;
 }
+
 #google_translate_element {
   position: absolute;
   right: 0px;
