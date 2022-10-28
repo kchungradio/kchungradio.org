@@ -82,13 +82,14 @@ p a:link {
 
 #main {
   margin: 1em auto;
-  width: 80%;
+  width: 90%;
 }
 
 @media screen and (max-width: 420px) {
   #main {
     margin: 1em auto;
     width: 100%;
+    overflow-wrap: anywhere;
   }
 }
 
