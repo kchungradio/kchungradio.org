@@ -45,15 +45,12 @@
     </div>
   </div>
 
-  <br />
-  <br />
 
-  <div class="app">
-    <div class="kchung">
-      <div class="play-buttons-container">
-        <div class="play-button-container">
-          <span class="player-label">kchung chinatown</span>
-          <div class="play-pause">
+  <div id="main">
+    <div class="wrap">
+      <div class="player">
+        <div class="player-main">
+          <div>
             <a href="" class="play-button no-hover">
               <i class="fa fa-play big-icon" aria-hidden="true"></i>
             </a>
@@ -61,11 +58,19 @@
               <i class="fa fa-pause big-icon" aria-hidden="true"></i>
             </a>
           </div>
+          <div>
+            <div id="showName"></div>
+            <div id="trackName"></div>
+          </div>
+          <span class="location">chinatown</span>
         </div>
   
-        <div class="play-button-container">
-          <span class="player-label">kchung public</span>
-          <div class="play-pause-public">
+        <div class="player-public">
+        	<div> 
+            <div id="showName"></div>
+            <div id="trackName"></div>
+        	</div>
+          <div>
             <a href="" class="play-button-public no-hover">
               <i class="fa fa-play big-icon" aria-hidden="true"></i>
             </a>
@@ -73,52 +78,43 @@
               <i class="fa fa-pause big-icon" aria-hidden="true"></i>
             </a>
           </div>
+          <div>
+            <div>Live from the Geffen Contemporary MOCA</div>
+          </div>
+          <span class="location">moca geffen</span>
         </div>
       </div>
 
-      <div class="metadata">
-        <div>now playing: </div>
-        <!-- divs to display show metadata, used in /js/stream.js -->
-        <div id="showName"></div>
-        <div id="trackName"></div>
+      <div class="chatbox">
+        <div id="tlkio"
+          data-channel="kchung"
+          data-theme="theme--minimal"
+          data-custom-css="https://www.kchungradio.org/css/style.css"
+          style="height:400px;"
+        ></div>
       </div>
-
-      <br />
-
-      <p><a href="/stream2">not working? click here to try stream 2.</a> If the public stream isn't working in chrome, try using firefox or safari instead.</p>
-
-      <audio class="player" id="player" preload="none">
-        <source src="https://kchungradio.out.airtime.pro/kchungradio_a" type="audio/mp3">
-        Your browser does not support the audio element.
-      </audio>
-
-      <audio class="player-public" id="player-public" preload="none">
-        <source src="http://s9.voscast.com:7376/;" type="audio/mp3">
-        Your browser does not support the audio element.
-      </audio>
     </div>
+
+    <div class="metadata">
+      <div><a href="/stream2">not working? click here to try stream 2.</a></div>
+      <div>If the public stream isn't working in chrome, try using firefox or safari instead.</div>
+    </div>
+
+    <audio id="player-main" preload="none">
+      <source src="https://kchungradio.out.airtime.pro/kchungradio_a" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
+
+    <audio id="player-public" preload="none">
+      <source src="http://s9.voscast.com:7376/;" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
+
+    <script src="https://code.jquery.com/jquery-1.9.0.min.js" integrity="sha256-f6DVw/U4x2+HjgEqw5BZf67Kq/5vudRZuRkljnbF344=" crossorigin="anonymous"></script>
+    <script src="/js/nospam.js"></script>
+    <script src="/js/stream.js"></script>
+    <script src="/js/play.js"></script>
+    <script src="https://tlk.io/embed.js"></script>
   </div>
-
-  <div>
-    <br />
-    <br />
-    <!-- chat -->
-    <div id="tlkio"
-      data-channel="kchung"
-      data-theme="theme--minimal"
-      data-custom-css="https://www.kchungradio.org/css/style.css"
-      style="width:600px; height:400px;"
-    ></div>
-  </div>
-
-  <br />
-  <br />
-
-  <script src="https://code.jquery.com/jquery-1.9.0.min.js" integrity="sha256-f6DVw/U4x2+HjgEqw5BZf67Kq/5vudRZuRkljnbF344=" crossorigin="anonymous"></script>
-  <script src="/js/nospam.js"></script>
-  <script src="/js/stream.js"></script>
-  <script src="/js/play.js"></script>
-  <script src="https://tlk.io/embed.js"></script>
 </body>
-
 </html>

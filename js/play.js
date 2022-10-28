@@ -1,4 +1,4 @@
-var audio = document.getElementById('player')
+var audio = document.getElementById('player-main')
 var audioPublic = document.getElementById('player-public')
 
 var playButton = $('.play-button')
