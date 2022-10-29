@@ -1,10 +1,16 @@
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent; /* For some Androids */
+  box-sizing: border-box;
+}
+
 html,
 body {
   font-family: courier, sans-serif;
   background-color: red;
   color: white;
-  font-size: 13px;
-  line-height: 17px;
+  font-size: 1em;
+  font-weight: bold;
   letter-spacing: 0px;
   text-transform: lowercase;
 }
@@ -33,32 +39,154 @@ p a:link {
   text-decoration: underline;
 }
 
-#nav a,
-#nav span {
-  list-style: none;
-  float: left;
-}
-#nav a.menu {
-  display: block;
-  background: red;
-  margin: 0 1px 0 0;
-  text-decoration: none;
-}
-#nav hr {
-  text-align: left;
-  margin-left: 0;
+#banner {
+  display: flex;
+  flex-direction: column;
 }
 
-.center {
-  margin-left: auto;
-  margin-right: auto;
+/* -------------------------------------------------------------------------- */
+/* Navbar */
+
+#nav {
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+  border-width: 2px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#nav > * {
+  margin-right: 1em;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 420px) {
+  #nav > * {
+    margin-right: 0;
+    width: 50%;
+  }
+
+  #nav {
+    flex-direction: row;
+  }
+
+  #left, #right {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Main */
+
+#main {
+  margin: 1em auto;
+  width: 90%;
+}
+
+@media screen and (max-width: 420px) {
+  #main {
+    margin: 1em auto;
+    width: 100%;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Mailchimp Mailinglist Form */
+
+#mc_embed_signup {
+  background: white;
+  color: red;
+  clear: left;
+  font: 14px Helvetica,Arial,sans-serif;
+  width: 45%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 420px) {
+  #mc_embed_signup {
+    background: white;
+    color: red;
+    clear: left;
+    font: 14px Helvetica,Arial,sans-serif;
+    width: 100%;
+    margin: 0;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Stream Player */
+
+.player {
+  grid-area: player;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 60%;
+}
+
+.player > div {
+  margin-bottom: 1em;
+}
+
+.metadata {
+  grid-area: metadata;
   text-align: center;
 }
 
-.huge {
-  font-size: 6em;
-  font-weight: 900;
+.metadata > div {
+  font-size: 0.75em;
 }
+
+.chatbox {
+  grid-area: chatbox;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.player-main {
+  line-height: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.player-public {
+  line-height: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.location {
+  margin-left: auto;
+}
+
+#trackName, #showName {
+  overflow-wrap: anywhere;
+}
+
+/* chat widget */
+.theme--minimal {
+  color: white;
+  width: 100%;
+}
+
+.big-icon {
+  font-size: 3em;
+  margin-right: 0.5em;
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/* External Widgets */
 
 /* chat widget */
 .theme--minimal {
@@ -69,6 +197,7 @@ p a:link {
 img.goog-te-gadget-icon {
   display: none;
 }
+
 #google_translate_element {
   position: absolute;
   right: 0px;
