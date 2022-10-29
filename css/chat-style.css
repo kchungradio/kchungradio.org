@@ -1,0 +1,44 @@
+.aside {
+    display: none;
+}
+
+.header {
+    display: none;
+}
+
+#chat {
+  padding: 0;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.time {
+  font-weight: bold;
+}
+
+.footer-wrapper {
+  padding: 0;
+}
+
+.join-hint, .join-hl, .join-or {
+  color: white;
+  font-weight: bold;
+}
+
+.theme--minimal .button {
+  color: white;
+  border-color: white;
+}
+.theme--minimal .input-text {
+  color: white;
+  border-color: white;
+}
+
+.theme--minimal ::placeholder { 
+  color: white;
+  opacity: 1; /* Firefox */
+}
+.theme--minimal input, .theme--minimal select, .theme--minimal textarea{
+    color: white;
+}
