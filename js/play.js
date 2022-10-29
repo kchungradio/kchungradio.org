@@ -1,10 +1,23 @@
-var audio = document.getElementById('player-main')
-var audioPublic = document.getElementById('player-public')
+let audio = document.getElementById('player-main')
+let stationSelect = document.getElementById('station-select')
 
-var playButton = $('.play-button')
-var pauseButton = $('.pause-button')
-var playButtonPublic = $('.play-button-public')
-var pauseButtonPublic = $('.pause-button-public')
+let playButton = $('.play-button')
+let pauseButton = $('.pause-button')
+
+const toggle = (src) =>
+  src === "1"
+    ? "https://kchungradio.out.airtime.pro/kchungradio_a"
+    : "http://s9.voscast.com:7376/;" 
+
+const selectStream = (s) => {
+  if (audio.paused) {
+    return audio.load()
+  }
+  audio.src = toggle(s)
+  audio.addEventListener('canplay', () => audio.play())
+  audio.load()
+}
+//  showInfoEl.innerText = stationSelect.value ? getAirtimeInfo(resp) : geffinInfo
 
 playButton.click(function(event) {
   event.preventDefault()
@@ -16,23 +29,9 @@ pauseButton.click(function(event) {
   pause()
 })
 
-playButtonPublic.click(function(event) {
-  event.preventDefault()
-  playPublic()
-})
-
-pauseButtonPublic.click(function(event) {
-  event.preventDefault()
-  pausePublic()
-})
-
 function play() {
   playButton.toggleClass('hidden')
   pauseButton.toggleClass('hidden')
-
-  if (playButtonPublic.hasClass('hidden')) {
-    pausePublic()
-  }
 
   audio.volume = 1.0
   audio.play()
@@ -43,23 +42,4 @@ function pause() {
   pauseButton.toggleClass('hidden')
 
   audio.pause()
-}
-
-function playPublic() {
-  playButtonPublic.toggleClass('hidden')
-  pauseButtonPublic.toggleClass('hidden')
-
-  if (playButton.hasClass('hidden')) {
-    pause()
-  }
-
-  audioPublic.volume = 1.0
-  audioPublic.play()
-}
-
-function pausePublic() {
-  playButtonPublic.toggleClass('hidden')
-  pauseButtonPublic.toggleClass('hidden')
-
-  audioPublic.pause()
 }
