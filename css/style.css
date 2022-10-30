@@ -117,20 +117,7 @@ p a:link {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Stream Player */
-
-.player {
-  grid-area: player;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin: 0 auto;
-  width: 60%;
-}
-
-.player > div {
-  margin-bottom: 1em;
-}
+/* Stream Page */
 
 .metadata {
   grid-area: metadata;
@@ -147,42 +134,83 @@ p a:link {
   width: 100%;
 }
 
-.player-main {
-  line-height: 1em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.player-public {
-  line-height: 1em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .location {
   margin-left: auto;
+}
+
+select {
+  background-color: red;
+  color: white;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
 }
 
 #trackName, #showName {
   overflow-wrap: anywhere;
 }
 
-/* chat widget */
-.theme--minimal {
+/* -------------------------------------------------------------------------- */
+/* Player Widget */
+
+.audio-player {
+  height: 50px;
+  width: 400px;
+  background: red;
+  border: solid;
+  border-width: 2px;
+  border-radius: 3px;
   color: white;
+  font-size: 0.75em;
+  display: grid;
+  margin: 0 auto;
+  margin-bottom: 1em;
+}
+
+.audio-player .controls {
+  display: flex;
+  width: 400px;
+  padding-right: 0.5em;
+}
+.audio-player .controls > * {
+  display: flex;
+  align-items: center;
+}
+
+.audio-player .controls .volume-container {
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+.audio-player .controls .volume-container .volume-slider {
+  position: absolute;
+  left: 3em;
+  z-index: -1;
+  width: 0;
+  height: 15px;
+  background: #444;
+  transition: 0.25s;
+}
+
+.audio-player .controls .volume-container .volume-slider .volume-percentage {
+  background: white;
+  height: 100%;
   width: 100%;
 }
 
-.big-icon {
-  font-size: 3em;
-  margin-right: 0.5em;
+.audio-player .controls .volume-container:hover .volume-slider {
+  width: 18em;
 }
 
-.hidden {
-  display: none;
-  opacity: 0;
+span#name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#station-select {
+  margin-left: auto;
 }
 
 /* -------------------------------------------------------------------------- */
