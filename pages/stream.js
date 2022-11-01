@@ -12,11 +12,11 @@ const Player = ({location, isPlaying, handlePlay, handlePause, metadata}) => {
         <span style={{ cursor: 'pointer', userSelect: 'none' }}>
           {isPlaying ? (
             <span onClick={handlePause}>
-              <FontAwesomeIcon icon={faPause} style={{ fontSize: '3em' }} />
+              <FontAwesomeIcon icon={faPause} style={{ fontSize: '1em' }} />
             </span>
           ) : (
             <span onClick={handlePlay}>
-              <FontAwesomeIcon icon={faPlay} style={{ fontSize: '3em' }} />
+              <FontAwesomeIcon icon={faPlay} style={{ fontSize: '1em' }} />
             </span>
           )}
         </span>
@@ -95,7 +95,7 @@ export default function StreamPage() {
 
           />
       </div>
-
+      
       <Chatbox />
 
       <audio ref={audioMainRef} id="player-chinatown" preload="none">

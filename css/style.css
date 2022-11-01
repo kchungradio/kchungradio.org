@@ -106,17 +106,9 @@ p a:link {
 .player {
   grid-area: player;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   margin: 0 auto;
-  width: 60%;
-}
-
-@media screen and (max-width: 420px) {
-  .player {
-    padding: 0 1em;
-    width: 100%;
-  }
+  width: 100%;
 }
 
 .player > div {
@@ -125,6 +117,24 @@ p a:link {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0.5em 1em;
+  margin: 0 1em;
+  width: 100%;
+  border: solid;
+  border-width: 2px;
+  border-radius: 3px;
+}
+
+@media screen and (max-width: 420px) {
+  .player {
+    flex-direction: column;
+    padding: 0 1em;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .player > div {
+    margin: 0;
+  }
 }
 
 .metadata {
