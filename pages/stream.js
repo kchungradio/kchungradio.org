@@ -48,7 +48,7 @@ export default function StreamPage() {
   const [isPlayingMoca, setIsPlayingMoca] = useState(false)
 
   function handlePauseClickMain() {
-    audioMainRef.current.pause().catch(console.error)
+    audioMainRef.current.pause()
     setIsPlayingChinatown(false)
   }
 
@@ -59,7 +59,7 @@ export default function StreamPage() {
   }
 
   function handlePauseClickPublic() {
-    audioPublicRef.current.pause().catch(console.error)
+    audioPublicRef.current.pause()
     setIsPlayingMoca(false)
   }
 
