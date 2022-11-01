@@ -1,23 +1,72 @@
-import React, { useRef, useState } from 'react'
-import Link from 'next/link'
+import { useRef, useState } from 'react'
 import useSWR from 'swr'
 
 import jsonFetcher from '../swr/jsonFetcher'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons'
 
-function StreamPage() {
-  const audioRef = useRef()
-  const [isPlaying, setIsPlaying] = useState(false)
+const Player = ({location, isPlaying, handlePlay, handlePause, metadata}) => {
+  return (
+    <div className={`player-${location}`}>
+      <div className="player-controls">
+        <span style={{ cursor: 'pointer', userSelect: 'none' }}>
+          {isPlaying ? (
+            <span onClick={handlePause}>
+              <FontAwesomeIcon icon={faPause} style={{ fontSize: '3em' }} />
+            </span>
+          ) : (
+            <span onClick={handlePlay}>
+              <FontAwesomeIcon icon={faPlay} style={{ fontSize: '3em' }} />
+            </span>
+          )}
+        </span>
+      </div>
+      <div>{metadata}</div>
+      <span className="location">{location}</span>
+    </div>
+  )
+}
 
-  function handlePauseClick() {
-    audioRef.current.pause()
-    setIsPlaying(false)
+const Chatbox = () => {
+  return (
+    <div className="chatbox">
+      <iframe
+        src="https://embed.tlk.io/kchung?custom_css_path=https://www.kchungradio.org/css/chat-style.css&amp;theme=theme--minimal"
+        width="100%"
+        height="100%"
+        frameBorder="0"
+        style={{ height: "400px" }}
+      ></iframe>
+    </div>
+  )
+}
+
+export default function StreamPage() {
+  const audioMainRef = useRef()
+  const audioPublicRef = useRef()
+  const [isPlayingChinatown, setIsPlayingChinatown] = useState(false)
+  const [isPlayingMoca, setIsPlayingMoca] = useState(false)
+
+  function handlePauseClickMain() {
+    audioMainRef.current.pause().catch(console.error)
+    setIsPlayingChinatown(false)
   }
 
-  function handlePlayClick() {
-    audioRef.current.play()
-    setIsPlaying(true)
+  function handlePlayClickMain() {
+    if (isPlayingMoca) handlePauseClickPublic()
+    audioMainRef.current.play().catch(console.error)
+    setIsPlayingChinatown(true)
+  }
+
+  function handlePauseClickPublic() {
+    audioPublicRef.current.pause().catch(console.error)
+    setIsPlayingMoca(false)
+  }
+
+  function handlePlayClickPublic() {
+    if (isPlayingChinatown) handlePauseClickMain()
+    audioPublicRef.current.play().catch(console.error)
+    setIsPlayingMoca(true)
   }
 
   const { data: liveInfo } = useSWR(
@@ -29,53 +78,35 @@ function StreamPage() {
     liveInfo?.shows?.current?.name
 
   return (
-    <div>
-      <div>
-        <span style={{ cursor: 'pointer', userSelect: 'none' }}>
-          {isPlaying ? (
-            <span onClick={handlePauseClick}>
-              <FontAwesomeIcon icon={faPause} style={{ fontSize: '10em' }} />
-            </span>
-          ) : (
-            <span onClick={handlePlayClick}>
-              <FontAwesomeIcon icon={faPlay} style={{ fontSize: '10em' }} />
-            </span>
-          )}
-        </span>
+    <div id="main">
+      <div className="player">
+        <Player location="chinatown"
+                isPlaying={isPlayingChinatown}
+                handlePlay={handlePlayClickMain}
+                handlePause={handlePauseClickMain}
+                metadata={showMetadata}
+          />
+
+        <Player location="moca geffen"
+                isPlaying={isPlayingMoca}
+                handlePlay={handlePlayClickPublic}
+                handlePause={handlePauseClickPublic}
+                metadata="Live from the Geffen Contemporary MOCA"
+
+          />
       </div>
 
-      <br />
+      <Chatbox />
 
-      <div>
-        <div>now playing: </div>
-        <div>{showMetadata}</div>
-      </div>
-
-      <br />
-
-      <p>
-        <Link href="/stream2">click here for stream 2</Link>
-      </p>
-
-      <audio ref={audioRef} id="player" className="player" preload="none">
-        <source src="http://s9.voscast.com:7376/;&type=mp3" type="audio/mp3" />
+      <audio ref={audioMainRef} id="player-chinatown" preload="none">
+        <source src="https://kchungradio.out.airtime.pro/kchungradio_a" type="audio/mp3" />
         Your browser does not support the audio element.
       </audio>
 
-      <br />
-      <br />
-
-      <div id="tlkio" style={{ width: '600px', height: '400px' }}>
-        <iframe
-          src="https://embed.tlk.io/kchung?custom_css_path=https://www.kchungradio.org/css/style.css&amp;theme=theme--minimal"
-          width="100%"
-          height="100%"
-          frameBorder="0"
-          style={{ marginBottom: -8 }}
-        ></iframe>
-      </div>
+      <audio ref={audioPublicRef}id="player-public" preload="none">
+        <source src="http://s9.voscast.com:7376/;" type="audio/mp3" />
+        Your browser does not support the audio element.
+      </audio>
     </div>
   )
 }
-
-export default StreamPage

@@ -101,29 +101,6 @@ p a:link {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Mailchimp Mailinglist Form */
-
-#mc_embed_signup {
-  background: white;
-  color: red;
-  clear: left;
-  font: 14px Helvetica,Arial,sans-serif;
-  width: 45%;
-  margin: 0 auto;
-}
-
-@media screen and (max-width: 420px) {
-  #mc_embed_signup {
-    background: white;
-    color: red;
-    clear: left;
-    font: 14px Helvetica,Arial,sans-serif;
-    width: 100%;
-    margin: 0;
-  }
-}
-
-/* -------------------------------------------------------------------------- */
 /* Stream Player */
 
 .player {
@@ -135,8 +112,19 @@ p a:link {
   width: 60%;
 }
 
+@media screen and (max-width: 420px) {
+  .player {
+    padding: 0 1em;
+    width: 100%;
+  }
+}
+
 .player > div {
   margin-bottom: 1em;
+  line-height: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .metadata {
@@ -151,21 +139,12 @@ p a:link {
 .chatbox {
   grid-area: chatbox;
   margin: 0 auto;
+  margin-top: 2em;
   width: 100%;
 }
 
-.player-main {
-  line-height: 1em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.player-public {
-  line-height: 1em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.player-controls {
+  padding-right: 1em;
 }
 
 .location {

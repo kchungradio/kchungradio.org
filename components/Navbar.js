@@ -22,7 +22,7 @@ function Navbar() {
       </div>
       <div id="nav">
         <div id="left">
-          <NavLink href="/stream">live stream</NavLink>
+          <NavLink href="/stream">stream</NavLink>
           <NavLink href="/schedule">schedule</NavLink>
           <NavLink href="/archive">archive</NavLink>
           <NavLink href="/participate">participate</NavLink>
