@@ -44,22 +44,6 @@ p a:link {
   flex-direction: column;
 }
 
-nav a,
-nav span {
-  list-style: none;
-  float: left;
-}
-nav a.menu {
-  display: block;
-  background: red;
-  margin: 0 1px 0 0;
-  text-decoration: none;
-}
-nav hr {
-  text-align: left;
-  margin-left: 0;
-}
-
 /* -------------------------------------------------------------------------- */
 /* Navbar */
 
@@ -73,8 +57,15 @@ nav hr {
 }
 
 #nav > * {
-  margin-right: 1em;
   white-space: nowrap;
+}
+
+#nav a {
+  margin-right: 1em;
+}
+
+#right span a {
+  margin-right: 0.5em;
 }
 
 @media screen and (max-width: 420px) {
@@ -217,4 +208,8 @@ img.goog-te-gadget-icon {
 #google_translate_element {
   position: absolute;
   right: 0px;
+}
+
+#paypal-button {
+    width: 10em;
 }

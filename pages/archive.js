@@ -134,7 +134,7 @@ function ArchivePage() {
   }
 
   return (
-    <div>
+    <div id="main" style={{ textAlign: 'center' }}>
       <form onSubmit={handleSearchButtonClick}>
         <input
           value={searchInput}

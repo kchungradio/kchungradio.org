@@ -5,51 +5,52 @@ import Link from 'next/link'
 function Navbar() {
   return (
     <>
-      <Link href="/">
-        <a className="no-hover">
-          <picture>
-            <img
-              src="/img/kchungblood.png"
-              alt="KCHUNG logo"
-              width="150"
-              style={{ border: 0 }}
-            />
-          </picture>
-        </a>
-      </Link>
-      <br />
-      <br />
-      <span>broadcasting on 1630 am, chinatown, los angeles</span>
-      <br />
-      <nav>
-        <hr width="1038" color="white" />
-        <NavLink href="/stream">live stream</NavLink>
-        <NavLink href="/schedule">schedule</NavLink>
-        <NavLink href="/archive">archive</NavLink>
-        <NavLink href="/email">email</NavLink>
-        <NavLink href="/mailinglist">mailing list</NavLink>
-        <NavLink href="/participate">participate</NavLink>
-        <NavLink href="/donate">donate</NavLink>
-        <NavLink href="https://www.facebook.com/kchungradio" external>
-          f
-        </NavLink>
-        <NavLink href="https://www.twitter.com/kchungradio" external>
-          t
-        </NavLink>
-        <NavLink href="https://www.instagram.com/kchungradio" external>
-          i
-        </NavLink>
-        <NavLink href="https://wiki.kchungradio.org" external>
-          wiki
-        </NavLink>
-        <NavLink href="https://kchung.bigcartel.com" external last>
-          store
-        </NavLink>
-        <br />
-        <hr width="1038" color="white" />
-      </nav>
-      <br />
-      <br />
+      <div id="banner">
+        <Link href="/">
+          <a className="no-hover">
+            <picture>
+              <img
+                src="/img/kchungblood.png"
+                alt="KCHUNG logo"
+                width="150"
+                style={{ border: 0 }}
+              />
+            </picture>
+          </a>
+        </Link>
+        <span>1630am chinatown los angeles</span>
+      </div>
+      <div id="nav">
+        <div id="left">
+          <NavLink href="/stream">live stream</NavLink>
+          <NavLink href="/schedule">schedule</NavLink>
+          <NavLink href="/archive">archive</NavLink>
+          <NavLink href="/participate">participate</NavLink>
+          <NavLink href="/donate">donate</NavLink>
+        </div>
+        <div id="right">
+          <NavLink href="/about">
+            about
+          </NavLink>
+          <NavLink href="https://kchung.bigcartel.com" external last>
+            store
+          </NavLink>
+          <NavLink href="https://www.moca.org/kchung-public" external last>
+            kchung public
+          </NavLink>
+          <span>
+            <NavLink href="https://www.facebook.com/kchungradio" external>
+              <img src="/img/facebook.png" width="14em" />
+            </NavLink>
+            <NavLink href="https://www.twitter.com/kchungradio" external>
+              <img src="/img/twitter.png" width="14em" />
+            </NavLink>
+            <NavLink href="https://www.instagram.com/kchungradio" external>
+              <img src="/img/instagram.png" width="14em" />
+            </NavLink>
+          </span>
+        </div>
+      </div>
     </>
   )
 }
@@ -73,7 +74,7 @@ function NavLink({ href, children, external, last }) {
   return (
     <>
       {link}
-      {!last && <span style={{ margin: '0 8px' }}>|</span>}
+      {!last}
     </>
   )
 }

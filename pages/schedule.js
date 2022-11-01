@@ -8,7 +8,7 @@ import React from 'react'
 
 function SchedulePage() {
   return (
-    <div>
+    <div id="main">
       <iframe
         src="https://kchungradio-schedule-calendar.now.sh"
         style={{
