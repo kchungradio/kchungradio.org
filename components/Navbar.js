@@ -39,13 +39,28 @@ function Navbar() {
           </NavLink>
           <span>
             <NavLink href="https://www.facebook.com/kchungradio" external>
-              <Image src="/img/facebook.png" width="14em" alt="facebook" />
+              <Image
+                src="/img/facebook.png"
+                width={14}
+                height={14}
+                alt="facebook"
+              />
             </NavLink>
             <NavLink href="https://www.twitter.com/kchungradio" external>
-              <Image src="/img/twitter.png" width="14em" alt="twitter" />
+              <Image
+                src="/img/twitter.png"
+                width={14}
+                height={14}
+                alt="twitter"
+              />
             </NavLink>
             <NavLink href="https://www.instagram.com/kchungradio" external>
-              <Image src="/img/instagram.png" width="14em" alt="instagram" />
+              <Image
+                src="/img/instagram.png"
+                width={14}
+                height={14}
+                alt="instagram"
+              />
             </NavLink>
           </span>
         </div>
