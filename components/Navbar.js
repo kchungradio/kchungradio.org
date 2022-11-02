@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <>
       <div id="banner">
-        <Link href="/">
+        <Link href="/stream">
           <a className="no-hover">
             <picture>
               <img
