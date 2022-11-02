@@ -24,10 +24,12 @@ function DonatePage() {
         81-2437303.
       </p>
       <h3>for members</h3>
+      <p>Member dues are $10/month per DJ. Please use the paypal button below to subscribe to automatic payments.</p>
+      
       <div id="paypal-button">
         <PayPalScriptProvider
           options={{
-            'client-id': 'test',
+            'client-id': 'AYvlpSx1PTdgYQo3wq8UcDzmH6zNX_lQOvlwhBVunfMPaXWmlKrB-_26WNBy4VqdHvB5Rb9wxBbAgX2O',
             components: 'buttons',
             intent: 'subscription',
             vault: true,
@@ -58,10 +60,14 @@ const ButtonWrapper = ({ type }) => {
       createSubscription={(data, actions) => {
         return actions.subscription
           .create({
-            plan_id: 'P-3RX065706M3469222L5IFM4I',
+            plan_id: 'P-14R72656K1344571AMNQ7OFA'
           })
           .then((orderId) => {
             // Your code here after create the order
+
+
+
+
             return orderId
           })
       }}
