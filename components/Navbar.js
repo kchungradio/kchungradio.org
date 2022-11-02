@@ -29,13 +29,11 @@ function Navbar() {
           <NavLink href="/donate">donate</NavLink>
         </div>
         <div id="right">
-          <NavLink href="/about">
-            about
-          </NavLink>
-          <NavLink href="https://kchung.bigcartel.com" external last>
+          <NavLink href="/about">about</NavLink>
+          <NavLink href="https://kchung.bigcartel.com" external>
             store
           </NavLink>
-          <NavLink href="https://www.moca.org/kchung-public" external last>
+          <NavLink href="https://www.moca.org/kchung-public" external>
             kchung public
           </NavLink>
           <span>
@@ -55,27 +53,15 @@ function Navbar() {
   )
 }
 
-function NavLink({ href, children, external, last }) {
-  let link
-  if (external) {
-    link = (
-      <a href={href} target="_blank" rel="noopener noreferrer">
-        {children}
-      </a>
-    )
-  } else {
-    link = (
-      <Link href={href}>
-        <a>{children}</a>
-      </Link>
-    )
-  }
-
-  return (
-    <>
-      {link}
-      {!last}
-    </>
+function NavLink({ href, children, external }) {
+  return external ? (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+    </a>
+  ) : (
+    <Link href={href}>
+      <a>{children}</a>
+    </Link>
   )
 }
 
@@ -83,7 +69,6 @@ NavLink.propTypes = {
   href: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   external: PropTypes.bool,
-  last: PropTypes.bool,
 }
 
 export default Navbar
