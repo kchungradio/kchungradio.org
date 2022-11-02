@@ -5,8 +5,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "pretty": "prettier --check '**/*.js'",
-    "format": "prettier -w '**/*.js'"
+    "prettier": "prettier --check '**/*.{js,jsx,ts,tsx,json,md}'",
+    "prettier:write": "prettier --write '**/*.{js,jsx,ts,tsx,json,md}'"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
@@ -28,7 +28,8 @@
   },
   "devDependencies": {
     "eslint": "8.26.0",
-    "eslint-config-prettier": "8.5.0",
+    "eslint-config-next": "13.0.1",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "4.2.1",
     "prettier": "2.7.1"
   },
