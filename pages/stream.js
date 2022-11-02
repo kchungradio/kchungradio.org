@@ -5,7 +5,7 @@ import jsonFetcher from '../swr/jsonFetcher'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons'
 
-const Player = ({location, isPlaying, handlePlay, handlePause, metadata}) => {
+const Player = ({ location, isPlaying, handlePlay, handlePause, metadata }) => {
   return (
     <div className={`player-${location}`}>
       <div className="player-controls">
@@ -35,7 +35,7 @@ const Chatbox = () => {
         width="100%"
         height="100%"
         frameBorder="0"
-        style={{ height: "400px" }}
+        style={{ height: '400px' }}
       ></iframe>
     </div>
   )
@@ -80,30 +80,34 @@ export default function StreamPage() {
   return (
     <div id="main">
       <div className="player">
-        <Player location="chinatown"
-                isPlaying={isPlayingChinatown}
-                handlePlay={handlePlayClickMain}
-                handlePause={handlePauseClickMain}
-                metadata={showMetadata}
-          />
+        <Player
+          location="chinatown"
+          isPlaying={isPlayingChinatown}
+          handlePlay={handlePlayClickMain}
+          handlePause={handlePauseClickMain}
+          metadata={showMetadata}
+        />
 
-        <Player location="moca geffen"
-                isPlaying={isPlayingMoca}
-                handlePlay={handlePlayClickPublic}
-                handlePause={handlePauseClickPublic}
-                metadata="Live from the Geffen Contemporary MOCA"
-
-          />
+        <Player
+          location="moca geffen"
+          isPlaying={isPlayingMoca}
+          handlePlay={handlePlayClickPublic}
+          handlePause={handlePauseClickPublic}
+          metadata="Live from the Geffen Contemporary MOCA"
+        />
       </div>
-      
+
       <Chatbox />
 
       <audio ref={audioMainRef} id="player-chinatown" preload="none">
-        <source src="https://kchungradio.out.airtime.pro/kchungradio_a" type="audio/mp3" />
+        <source
+          src="https://kchungradio.out.airtime.pro/kchungradio_a"
+          type="audio/mp3"
+        />
         Your browser does not support the audio element.
       </audio>
 
-      <audio ref={audioPublicRef}id="player-public" preload="none">
+      <audio ref={audioPublicRef} id="player-public" preload="none">
         <source src="http://s9.voscast.com:7376/;" type="audio/mp3" />
         Your browser does not support the audio element.
       </audio>

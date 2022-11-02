@@ -23,6 +23,6 @@ Changes merged with the `main` branch automaticcaly get deployed to [www.kchungr
 
 ### Chat about stuff under issues
 
-Check the [issue tracker](https://github.com/kchungradio/kchungradio.org/issues) for discussion on bugs and enhancements. 
+Check the [issue tracker](https://github.com/kchungradio/kchungradio.org/issues) for discussion on bugs and enhancements.
 
 You can also find us in the **#website** channel on the KCHUNG Slack.

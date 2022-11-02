@@ -14,6 +14,7 @@ function DonatePage() {
         <a
           href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=538MT3ZCJPQ5L"
           target="_blank"
+          rel="noreferrer"
         >
           here
         </a>
@@ -24,12 +25,16 @@ function DonatePage() {
         81-2437303.
       </p>
       <h3>for members</h3>
-      <p>Member dues are $10/month per DJ. Please use the paypal button below to subscribe to automatic payments.</p>
-      
+      <p>
+        Member dues are $10/month per DJ. Please use the paypal button below to
+        subscribe to automatic payments.
+      </p>
+
       <div id="paypal-button">
         <PayPalScriptProvider
           options={{
-            'client-id': 'AYvlpSx1PTdgYQo3wq8UcDzmH6zNX_lQOvlwhBVunfMPaXWmlKrB-_26WNBy4VqdHvB5Rb9wxBbAgX2O',
+            'client-id':
+              'AYvlpSx1PTdgYQo3wq8UcDzmH6zNX_lQOvlwhBVunfMPaXWmlKrB-_26WNBy4VqdHvB5Rb9wxBbAgX2O',
             components: 'buttons',
             intent: 'subscription',
             vault: true,
@@ -53,20 +58,17 @@ const ButtonWrapper = ({ type }) => {
         intent: 'subscription',
       },
     })
-  }, [type])
+  }, [type, dispatch, options])
 
   return (
     <PayPalButtons
       createSubscription={(data, actions) => {
         return actions.subscription
           .create({
-            plan_id: 'P-14R72656K1344571AMNQ7OFA'
+            plan_id: 'P-14R72656K1344571AMNQ7OFA',
           })
           .then((orderId) => {
             // Your code here after create the order
-
-
-
 
             return orderId
           })

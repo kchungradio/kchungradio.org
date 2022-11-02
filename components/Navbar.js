@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
+import Image from 'next/image'
 
 function Navbar() {
   return (
@@ -38,13 +39,13 @@ function Navbar() {
           </NavLink>
           <span>
             <NavLink href="https://www.facebook.com/kchungradio" external>
-              <img src="/img/facebook.png" width="14em" />
+              <Image src="/img/facebook.png" width="14em" alt="facebook" />
             </NavLink>
             <NavLink href="https://www.twitter.com/kchungradio" external>
-              <img src="/img/twitter.png" width="14em" />
+              <Image src="/img/twitter.png" width="14em" alt="twitter" />
             </NavLink>
             <NavLink href="https://www.instagram.com/kchungradio" external>
-              <img src="/img/instagram.png" width="14em" />
+              <Image src="/img/instagram.png" width="14em" alt="instagram" />
             </NavLink>
           </span>
         </div>

@@ -28,7 +28,10 @@ function ParticipatePage() {
       <p>
         if you would like to do a one-off show or a short series of up to three
         shows, send a proposal to{' '}
-        <a href="mailto:liveinstudios@kchungradio.org">liveinstudios@kchungradio.org</a> .
+        <a href="mailto:liveinstudios@kchungradio.org">
+          liveinstudios@kchungradio.org
+        </a>
+        .
       </p>
       <br />
       <h3>where to send your music</h3>
@@ -43,7 +46,8 @@ function ParticipatePage() {
         los angeles, ca 90012
       </blockquote>
       <p>
-        or email digital submissions to{' '} <a href="mailto:music@kchungradio.org">music@kchungradio.org</a> .
+        or email digital submissions to{' '}
+        <a href="mailto:music@kchungradio.org">music@kchungradio.org</a>.
       </p>
       <br />
       <h3>support</h3>
@@ -64,7 +68,11 @@ function ParticipatePage() {
       </ul>
       <p>
         if you would like to become a kchung staff member or donate equipment,
-        please email{' '} <a href="mailto:generalmanager@kchungradio.org">generalmanager@kchungradio.org</a> .
+        please email{' '}
+        <a href="mailto:generalmanager@kchungradio.org">
+          generalmanager@kchungradio.org
+        </a>
+        .
       </p>
     </div>
   )

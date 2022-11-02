@@ -9,9 +9,7 @@
     },
     {
       "src": "/api(.*)",
-      "methods": [
-        "GET"
-      ],
+      "methods": ["GET"],
       "headers": {
         "Access-Control-Allow-Origin": "*",
         "Cache-Control": "s-maxage=300, max-age=0"
