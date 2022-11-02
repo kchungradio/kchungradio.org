@@ -68,7 +68,7 @@ p a:link {
   margin-right: 0.5em;
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 768px) {
   #nav > * {
     margin-right: 0;
     width: 50%;
@@ -78,7 +78,8 @@ p a:link {
     flex-direction: row;
   }
 
-  #left, #right {
+  #left,
+  #right {
     display: flex;
     flex-direction: column;
   }
@@ -92,7 +93,7 @@ p a:link {
   width: 90%;
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 768px) {
   #main {
     margin: 1em auto;
     width: 100%;
@@ -104,36 +105,29 @@ p a:link {
 /* Stream Player */
 
 .player {
-  grid-area: player;
   display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
-  width: 100%;
 }
 
 .player > div {
-  margin-bottom: 1em;
   line-height: 1em;
   display: flex;
-  justify-content: space-between;
+  width: 50%;
   align-items: center;
   padding: 0.5em 1em;
   margin: 0 1em;
-  width: 100%;
   border: solid;
   border-width: 2px;
   border-radius: 3px;
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 768px) {
   .player {
     flex-direction: column;
     padding: 0 1em;
-    width: 100%;
-    margin: 0 auto;
   }
   .player > div {
-    margin: 0;
+    margin: 1em 0;
+    width: 100%;
   }
 }
 
@@ -161,7 +155,8 @@ p a:link {
   margin-left: auto;
 }
 
-#trackName, #showName {
+#trackName,
+#showName {
   overflow-wrap: anywhere;
 }
 
@@ -200,5 +195,5 @@ img.goog-te-gadget-icon {
 }
 
 #paypal-button {
-    width: 10em;
+  width: 10em;
 }

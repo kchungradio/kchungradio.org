@@ -1,11 +1,11 @@
 import { useRef, useState } from 'react'
 import useSWR from 'swr'
-
-import jsonFetcher from '../swr/jsonFetcher'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons'
 
-const Player = ({ location, isPlaying, handlePlay, handlePause, metadata }) => {
+import jsonFetcher from '../swr/jsonFetcher'
+
+function Player({ location, isPlaying, handlePlay, handlePause, metadata }) {
   return (
     <div className={`player-${location}`}>
       <div className="player-controls">
@@ -21,13 +21,15 @@ const Player = ({ location, isPlaying, handlePlay, handlePause, metadata }) => {
           )}
         </span>
       </div>
-      <div>{metadata}</div>
-      <span className="location">{location}</span>
+      <span style={{ wordBreak: 'break-all' }}>{metadata}</span>
+      <span className="location" style={{ minWidth: 110, paddingLeft: '1em' }}>
+        {location}
+      </span>
     </div>
   )
 }
 
-const Chatbox = () => {
+function Chatbox() {
   return (
     <div className="chatbox">
       <iframe
