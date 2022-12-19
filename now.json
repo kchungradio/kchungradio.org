@@ -3,7 +3,9 @@
     {
       "src": "/",
       "status": 307,
-      "headers": { "Location": "/stream" }
+      "headers": {
+        "Location": "/stream"
+      }
     },
     {
       "src": "/api(.*)",
@@ -17,22 +19,30 @@
     {
       "src": "/([^/]+).html",
       "status": 301,
-      "headers": { "Location": "/$1" }
+      "headers": {
+        "Location": "/$1"
+      }
     },
     {
       "src": "/wiki(.*)",
       "status": 301,
-      "headers": { "Location": "https://wiki.kchungradio.org$1" }
+      "headers": {
+        "Location": "https://wiki.kchungradio.org$1"
+      }
     },
     {
       "src": "/Talking-Show(.*)",
       "status": 301,
-      "headers": { "Location": "https://talking-show.kchungradio.org$1" }
+      "headers": {
+        "Location": "https://talking-show.kchungradio.org$1"
+      }
     },
     {
       "src": "/([^/]+).(jpg|png|ico|svg)",
       "status": 301,
-      "headers": { "Location": "/img/$1.$2" }
+      "headers": {
+        "Location": "/img/$1.$2"
+      }
     }
   ]
 }

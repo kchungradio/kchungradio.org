@@ -10,7 +10,6 @@ body {
   background-color: red;
   color: white;
   font-size: 1em;
-  font-weight: bold;
   letter-spacing: 0px;
   text-transform: lowercase;
 }
@@ -57,11 +56,18 @@ p a:link {
 }
 
 #nav > * {
-  margin-right: 1em;
   white-space: nowrap;
 }
 
-@media screen and (max-width: 420px) {
+#nav a {
+  margin-right: 1em;
+}
+
+#right span a {
+  margin-right: 0.5em;
+}
+
+@media screen and (max-width: 768px) {
   #nav > * {
     margin-right: 0;
     width: 50%;
@@ -71,7 +77,8 @@ p a:link {
     flex-direction: row;
   }
 
-  #left, #right {
+  #left,
+  #right {
     display: flex;
     flex-direction: column;
   }
@@ -85,7 +92,7 @@ p a:link {
   width: 90%;
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 768px) {
   #main {
     margin: 1em auto;
     width: 100%;
@@ -94,42 +101,33 @@ p a:link {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Mailchimp Mailinglist Form */
-
-#mc_embed_signup {
-  background: white;
-  color: red;
-  clear: left;
-  font: 14px Helvetica,Arial,sans-serif;
-  width: 45%;
-  margin: 0 auto;
-}
-
-@media screen and (max-width: 420px) {
-  #mc_embed_signup {
-    background: white;
-    color: red;
-    clear: left;
-    font: 14px Helvetica,Arial,sans-serif;
-    width: 100%;
-    margin: 0;
-  }
-}
-
-/* -------------------------------------------------------------------------- */
 /* Stream Player */
 
 .player {
-  grid-area: player;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin: 0 auto;
-  width: 60%;
 }
 
 .player > div {
-  margin-bottom: 1em;
+  line-height: 1em;
+  display: flex;
+  width: 50%;
+  align-items: center;
+  padding: 0.5em 1em;
+  margin: 0 1em;
+  border: solid;
+  border-width: 2px;
+  border-radius: 3px;
+}
+
+@media screen and (max-width: 768px) {
+  .player {
+    flex-direction: column;
+    padding: 0 1em;
+  }
+  .player > div {
+    margin: 1em 0;
+    width: 100%;
+  }
 }
 
 .metadata {
@@ -144,28 +142,20 @@ p a:link {
 .chatbox {
   grid-area: chatbox;
   margin: 0 auto;
+  margin-top: 2em;
   width: 100%;
 }
 
-.player-main {
-  line-height: 1em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.player-public {
-  line-height: 1em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.player-controls {
+  padding-right: 1em;
 }
 
 .location {
   margin-left: auto;
 }
 
-#trackName, #showName {
+#trackName,
+#showName {
   overflow-wrap: anywhere;
 }
 
@@ -201,4 +191,8 @@ img.goog-te-gadget-icon {
 #google_translate_element {
   position: absolute;
   right: 0px;
+}
+
+#paypal-button {
+  width: 10em;
 }

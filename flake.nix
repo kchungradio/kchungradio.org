@@ -15,6 +15,7 @@
           pkgs.nodePackages.prettier
           pkgs.nodePackages.vercel
           pkgs.nodejs
+          pkgs.yarn
         ];
       };
     };
