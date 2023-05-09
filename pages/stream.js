@@ -110,7 +110,10 @@ export default function StreamPage() {
       </audio>
 
       <audio ref={audioPublicRef} id="player-public" preload="none">
-        <source src="http://s9.voscast.com:7376/;" type="audio/mp3" />
+        <source
+          src="https://kchungpublic.out.airtime.pro/kchungpublic_a"
+          type="audio/mp3"
+        />
         Your browser does not support the audio element.
       </audio>
     </div>

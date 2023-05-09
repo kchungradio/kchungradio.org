@@ -26,7 +26,7 @@ function DonatePage() {
       </p>
       <h3>for members</h3>
       <p>
-        Member dues are $10/month per DJ. Please use the paypal button below to
+        Member dues are $12/month per DJ. Please use the paypal button below to
         subscribe to automatic payments.
       </p>
 
