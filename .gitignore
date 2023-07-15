@@ -1,5 +1,6 @@
 .env
 .DS_Store
+tsconfig.tsbuildinfo
 node_modules
 
 .now
