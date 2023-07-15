@@ -11,7 +11,7 @@ Welcome to KCHUNG Radio!
   - `git clone https://github.com/kchungradio/kchungradio.org.git`
   - `cd kchungradio.org`
   - `npm install`
-  - OPTIONAL: Get the aws secrets and put in a `.env` file or in `.envrc.local` if you use `direnv`. This is only needed if you want to connect to the archive.
+  - OPTIONAL: Get the secrets on #website and put them in a `.env` file. This is only needed if you want to connect to the archive or sign in locally.
   - `npm run dev`
 - visit http://localhost:3000 in your browser
 
