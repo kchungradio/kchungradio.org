@@ -2,8 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useSession, signIn, signOut } from 'next-auth/react'
 
 function Navbar() {
+  const { data: session, status } = useSession()
+
   return (
     <>
       <div id="banner">
@@ -29,6 +32,7 @@ function Navbar() {
           <NavLink href="/participate">participate</NavLink>
           <NavLink href="/donate">donate</NavLink>
         </div>
+
         <div id="right">
           <NavLink href="/about">about</NavLink>
           <NavLink href="https://kchung.bigcartel.com" external>
@@ -37,6 +41,7 @@ function Navbar() {
           <NavLink href="https://www.moca.org/kchung-public" external>
             kchung public
           </NavLink>
+
           <span>
             <NavLink href="https://www.facebook.com/kchungradio" external>
               <Image
@@ -63,6 +68,16 @@ function Navbar() {
               />
             </NavLink>
           </span>
+
+          {status === 'authenticated' ? (
+            <a style={{ cursor: 'pointer' }} onClick={() => signOut()}>
+              sign out
+            </a>
+          ) : (
+            <a style={{ cursor: 'pointer' }} onClick={() => signIn('cognito')}>
+              sign in
+            </a>
+          )}
         </div>
       </div>
     </>
