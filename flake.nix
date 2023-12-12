@@ -26,15 +26,41 @@
 
           formatter = pkgs.nixpkgs-fmt;
 
-          packages.default = pkgs.buildNpmPackage rec {
-            pname = "kchungradio.org";
-            version = "0.1.0.0";
-            buildInputs = [
-              pkgs.nodejs
-            ];
-            src = ./.;
-            npmDepsHash = "sha256-ej6qnzSAkEOBNOYwPRaJWmst7BQRe3BDdbi76y708Aw=";
-            npmBuild = "npm run build";
+          packages = let
+            kchungradio = pkgs.buildNpmPackage rec {
+              pname = "kchungradio.org";
+              version = "0.1.0.0";
+              buildInputs = [
+                pkgs.nodejs
+              ];
+              src = ./.;
+              npmDepsHash = "sha256-ej6qnzSAkEOBNOYwPRaJWmst7BQRe3BDdbi76y708Aw=";
+              npmBuild = "npm run build";
+
+              installPhase = ''
+                mkdir $out
+                mkdir $out/.next
+
+                cp -r .next/standalone $out
+                cp -r .next/static $out/.next/static
+                '';
+            };
+            in {
+            default = kchungradio;
+            container = pkgs.dockerTools.buildLayeredImage
+              {
+                name = "kchungradio.org";
+                contents = [ pkgs.nodejs kchungradio ];
+                config = {
+                  Cmd = [
+                    "${pkgs.nodejs}/bin/node"
+                    "server.js"
+                  ];
+                  ExposedPorts = {
+                    "3000/tcp" = { };
+                  };
+                };
+              };
           };
         });
 }
