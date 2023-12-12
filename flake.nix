@@ -38,11 +38,9 @@
               npmBuild = "npm run build";
 
               installPhase = ''
-                mkdir $out
-                mkdir $out/.next
-
                 cp -r .next/standalone $out
                 cp -r .next/static $out/.next/static
+                cp -r public $out/public
                 '';
             };
             in {
