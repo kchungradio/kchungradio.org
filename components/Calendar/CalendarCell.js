@@ -57,14 +57,10 @@ export default function CalendarCell({ date, events }) {
           top: 12px;
           left: 2px;
           white-space: nowrap;
-          //padding-right: 13px;
-          //padding-bottom: 15px;
+          padding-right: 13px;
+          padding-bottom: 15px;
           display: flex;
           flex-direction: column;
-        }
-        .event {
-          border: 1px solid;
-          word-break: break-all;
         }
         @media (hover: none), (hover: on-demand) {
           .events {
