@@ -58,7 +58,7 @@ const ButtonWrapper = ({ type }) => {
         intent: 'subscription',
       },
     })
-  }, [type])
+  }, [dispatch, options, type])
 
   return (
     <PayPalButtons
