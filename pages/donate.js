@@ -1,11 +1,21 @@
 import { useEffect } from 'react'
-import {
-  PayPalScriptProvider,
-  PayPalButtons,
-  usePayPalScriptReducer,
-} from '@paypal/react-paypal-js'
+import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js'
+import { handleCreateSubscription } from '../lib/paypal'
 
 function DonatePage() {
+  const [{ isInitial, isPending, isResolved, isRejected, options }, dispatch] =
+    usePayPalScriptReducer()
+
+  useEffect(() => {
+    dispatch({
+      type: 'resetOptions',
+      value: {
+        ...options,
+      },
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <div id="main">
       <h3>how to donate money</h3>
@@ -31,52 +41,19 @@ function DonatePage() {
       </p>
 
       <div id="paypal-button">
-        <PayPalScriptProvider
-          options={{
-            'client-id':
-              'AYvlpSx1PTdgYQo3wq8UcDzmH6zNX_lQOvlwhBVunfMPaXWmlKrB-_26WNBy4VqdHvB5Rb9wxBbAgX2O',
-            components: 'buttons',
-            intent: 'subscription',
-            vault: true,
-          }}
-        >
-          <ButtonWrapper type="subscription" />
-        </PayPalScriptProvider>
+        {isInitial && <span>load paypal!</span>}
+        {isPending && <span>loading paypal...</span>}{' '}
+        {isRejected && <span>problem loading paypal</span>}
+        {isResolved && (
+          <PayPalButtons
+            createSubscription={handleCreateSubscription}
+            style={{
+              label: 'subscribe',
+            }}
+          />
+        )}
       </div>
     </div>
-  )
-}
-
-const ButtonWrapper = ({ type }) => {
-  const [{ options }, dispatch] = usePayPalScriptReducer()
-
-  useEffect(() => {
-    dispatch({
-      type: 'resetOptions',
-      value: {
-        ...options,
-        intent: 'subscription',
-      },
-    })
-  }, [type])
-
-  return (
-    <PayPalButtons
-      createSubscription={(data, actions) => {
-        return actions.subscription
-          .create({
-            plan_id: 'P-14R72656K1344571AMNQ7OFA',
-          })
-          .then((orderId) => {
-            // Your code here after create the order
-
-            return orderId
-          })
-      }}
-      style={{
-        label: 'subscribe',
-      }}
-    />
   )
 }
 

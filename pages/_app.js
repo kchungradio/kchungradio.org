@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
-
 import React from 'react'
 import Head from 'next/head'
 import { config } from '@fortawesome/fontawesome-svg-core'
+import { PayPalScriptProvider } from '@paypal/react-paypal-js'
+import { paypalConfig } from '../lib/paypal'
 
 import Navbar from '../components/Navbar'
 
@@ -21,7 +22,9 @@ function App({ Component, pageProps }) {
         <meta property="og:image" content="/img/kchungforfacebook.jpg" />
       </Head>
       <Navbar />
-      <Component {...pageProps} />
+      <PayPalScriptProvider deferLoading options={paypalConfig}>
+        <Component {...pageProps} />
+      </PayPalScriptProvider>
     </>
   )
 }

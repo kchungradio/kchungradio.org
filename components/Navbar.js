@@ -7,17 +7,15 @@ function Navbar() {
   return (
     <>
       <div id="banner">
-        <Link href="/stream">
-          <a className="no-hover">
-            <picture>
-              <img
-                src="/img/kchungblood.png"
-                alt="KCHUNG logo"
-                width="150"
-                style={{ border: 0 }}
-              />
-            </picture>
-          </a>
+        <Link href="/stream" className="no-hover">
+          <picture>
+            <img
+              src="/img/kchungblood.png"
+              alt="KCHUNG logo"
+              width="150"
+              style={{ border: 0 }}
+            />
+          </picture>
         </Link>
         <span>1630am chinatown los angeles</span>
       </div>
@@ -76,7 +74,7 @@ function NavLink({ href, children, external }) {
     </a>
   ) : (
     <Link href={href}>
-      <a>{children}</a>
+      {children}
     </Link>
   )
 }
