@@ -27,8 +27,11 @@ export default function Calendar({ events }) {
       .sort((a, b) => new Date(a.start) - new Date(b.start))
       .reduce((acc, event) => {
         const dayOfMonth = new Date(event.start).getDate()
-        acc[dayOfMonth - 1] = acc[dayOfMonth - 1] || []
-        acc[dayOfMonth - 1].push(event)
+        if (!acc[dayOfMonth - 1]) {
+          acc[dayOfMonth - 1] = [event]
+        } else {
+          acc[dayOfMonth - 1].push(event)
+        }
         return acc
       }, [])
   }, [events])
@@ -58,6 +61,12 @@ export default function Calendar({ events }) {
       <style jsx>{`
         .calendar {
           width: 1071px;
+          font-family: courier, sans-serif;
+          background: red;
+          color: white;
+          margin: 0;
+          padding: 0;
+          font-size: 13px;
         }
         .day {
           display: inline-block;
@@ -69,6 +78,21 @@ export default function Calendar({ events }) {
           display: inline-block;
           height: 145px;
           width: 148px;
+        }
+        a {
+          color: white;
+          cursor: pointer;
+        }
+        a:hover {
+          background: white;
+          color: red;
+          text-decoration: none;
+        }
+        a:link {
+          text-decoration: none;
+        }
+        a:visited {
+          text-decoration: none;
         }
       `}</style>
     </div>

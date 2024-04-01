@@ -61,6 +61,7 @@ export default function CalendarCell({ date, events }) {
           padding-bottom: 15px;
           display: flex;
           flex-direction: column;
+          overflow: hidden;
         }
         @media (hover: none), (hover: on-demand) {
           .events {
