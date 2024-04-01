@@ -71,13 +71,21 @@ export default function StreamPage() {
     setIsPlayingMoca(true)
   }
 
-  const { data: liveInfo } = useSWR(
+  const { data: liveInfoCh1 } = useSWR(
     'https://kchungradio.airtime.pro/api/live-info-v2',
-    jsonFetcher
+    jsonFetcher,
   )
-  const showMetadata =
-    liveInfo?.tracks?.current?.metadata?.filepath ||
-    liveInfo?.shows?.current?.name
+  const ch1metadata =
+    liveInfoCh1?.tracks?.current?.metadata?.filepath ||
+    liveInfoCh1?.shows?.current?.name
+
+  const { data: liveInfoCh2 } = useSWR(
+    'https://kchungpublic.airtime.pro/api/live-info-v2',
+    jsonFetcher,
+  )
+  const ch2metadata =
+    liveInfoCh2?.tracks?.current?.metadata?.filepath ||
+    liveInfoCh2?.shows?.current?.name
 
   return (
     <div id="main">
@@ -87,7 +95,7 @@ export default function StreamPage() {
           isPlaying={isPlayingChinatown}
           handlePlay={handlePlayClickMain}
           handlePause={handlePauseClickMain}
-          metadata={showMetadata}
+          metadata={ch1metadata}
         />
 
         <Player
@@ -95,7 +103,7 @@ export default function StreamPage() {
           isPlaying={isPlayingMoca}
           handlePlay={handlePlayClickPublic}
           handlePause={handlePauseClickPublic}
-          metadata="Live from the Geffen Contemporary MOCA"
+          metadata={ch2metadata}
         />
       </div>
 
