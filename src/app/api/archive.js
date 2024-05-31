@@ -1,4 +1,4 @@
-import { query } from './_lib/db'
+import { query } from '../../lib/db'
 
 export default async function handler(req, res) {
   if (req.url.includes('favicon')) return
@@ -15,7 +15,7 @@ export default async function handler(req, res) {
      WHERE path ILIKE $3
      ORDER BY date DESC
      LIMIT $1 OFFSET $2`,
-    [limit, page * limit, `%${searchWild}%`]
+    [limit, page * limit, `%${searchWild}%`],
   )
   const rows = data.rows.map((row) => ({
     ...row,

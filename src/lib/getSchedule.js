@@ -1,8 +1,8 @@
-import { calendar, auth as googleAuth } from '@googleapis/calendar'
+import { sanitizeEvent } from './sanitize-event'
 import moment from 'moment-timezone'
 import dotenv from 'dotenv'
+import { auth as googleAuth, calendar } from '@googleapis/calendar'
 import { decode } from 'base-64'
-import { sanitizeEvent } from './sanitize-event'
 dotenv.config()
 
 const auth = new googleAuth.GoogleAuth({
@@ -12,7 +12,7 @@ const auth = new googleAuth.GoogleAuth({
 
 const googleCal = calendar({ version: 'v3', auth })
 
-export async function fetchCalendar(calendarId = '') {
+export async function getSchedule(calendarId = '') {
   const { timeMin, timeMax } = _getDates()
 
   const result = await googleCal.events.list({
@@ -44,14 +44,4 @@ function _getDates() {
     .format()
 
   return { timeMin, timeMax }
-}
-
-export const parseErrorObject = (error) => {
-  if (error.response) {
-    return {
-      status: error.response.data.error.code,
-      message: error.response.data.error.message,
-    }
-  }
-  return null
 }

@@ -1,14 +1,20 @@
 import React from 'react'
+import dotenv from 'dotenv'
 import Calendar from '../components/Calendar/Calendar'
-import { fetchCalendar, parseErrorObject } from '../lib/fetchCalendar'
+import { parseErrorObject } from '../src/lib/parseErrorObject'
+import jsonFetcher from '../swr/jsonFetcher'
+dotenv.config()
 
 const CHINATOWN_SCHEDULE_ID =
   'kchungradio.org_dal1nqjjuh3kvb65bjhdab545g@group.calendar.google.com'
 
-export async function getStaticProps() {
+export const getServerSideProps = async () => {
   try {
-    const result = await fetchCalendar(CHINATOWN_SCHEDULE_ID)
-    return { props: { events: result, eventsError: null } }
+    const data = await jsonFetcher(
+      `${process.env.API_ENDPOINT}/api/schedule/${CHINATOWN_SCHEDULE_ID}`,
+    )
+    console.log('data', data)
+    return { props: { events: data, eventsError: null } }
   } catch (error) {
     return { props: { events: null, eventsError: parseErrorObject(error) } }
   }
