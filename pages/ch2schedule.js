@@ -5,7 +5,7 @@ import React from 'react'
 const MOCA_SCHEDULE_ID =
   'c_a93f305736de4f5767385cd52ad13bbacddb68b92d5b69a6b8ec7b7bea3d6719@group.calendar.google.com'
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   try {
     const result = await fetchCalendar(MOCA_SCHEDULE_ID)
     return { props: { events: result, eventsError: null } }
