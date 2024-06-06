@@ -24,9 +24,11 @@ export async function getSchedule(calendarId = '') {
     maxResults: 2500,
   })
 
-  return result.data.items
+  const events = result.data.items
     .filter((item) => item.start.hasOwnProperty('dateTime'))
     .map(sanitizeEvent)
+  console.warn('----->', events.length)
+  return events
 }
 
 function _getDates() {
