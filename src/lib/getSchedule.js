@@ -27,7 +27,6 @@ export async function getSchedule(calendarId = '') {
   const events = result.data.items
     .filter((item) => item.start.hasOwnProperty('dateTime'))
     .map(sanitizeEvent)
-  console.warn('----->', events.length)
   return events
 }
 
