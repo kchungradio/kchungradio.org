@@ -1,26 +1,31 @@
 import React from 'react'
-import dotenv from 'dotenv'
 import Calendar from '../components/Calendar/Calendar'
 import { parseErrorObject } from '../src/lib/parseErrorObject'
 import jsonFetcher from '../swr/jsonFetcher'
-dotenv.config()
+import useSWRInfinite from 'swr/infinite'
 
 const CHINATOWN_SCHEDULE_ID =
   'kchungradio.org_dal1nqjjuh3kvb65bjhdab545g@group.calendar.google.com'
 
-export const getServerSideProps = async () => {
-  try {
-    const data = await jsonFetcher(
-      `${process.env.API_ENDPOINT}/api/schedule/${CHINATOWN_SCHEDULE_ID}`,
-    )
-    console.log('data', data)
-    return { props: { events: data, eventsError: null } }
-  } catch (error) {
-    return { props: { events: null, eventsError: parseErrorObject(error) } }
-  }
-}
+export default function Ch1Page() {
+  const { data, error = {} } = useSWRInfinite(
+    () => `api/schedule/${CHINATOWN_SCHEDULE_ID}`,
+    jsonFetcher,
+    {
+      revalidateIfStale: false,
+      revalidateOnFocus: false,
+      revalidateFirstPage: false,
+      revalidateOnReconnect: false,
+    },
+  )
 
-export default function Ch1Page({ events, eventsError }) {
+  if (!data && !error) {
+    return null
+  }
+
+  const events = data?.[0]
+  const eventsError = parseErrorObject(error)
+
   return (
     <div id="main">
       {events ? (

@@ -27,7 +27,6 @@ export async function GET(req) {
     search = searchParams.get('search')
   }
 
-  console.log(search)
   const searchWild = search.trim().replace(/ /g, '%').replace(/\*/g, '%')
 
   const data = await query(
