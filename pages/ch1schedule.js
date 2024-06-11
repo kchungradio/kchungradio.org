@@ -1,20 +1,31 @@
 import React from 'react'
 import Calendar from '../components/Calendar/Calendar'
-import { fetchCalendar, parseErrorObject } from '../lib/fetchCalendar'
+import { parseErrorObject } from '../src/lib/parseErrorObject'
+import jsonFetcher from '../swr/jsonFetcher'
+import useSWRInfinite from 'swr/infinite'
 
 const CHINATOWN_SCHEDULE_ID =
   'kchungradio.org_dal1nqjjuh3kvb65bjhdab545g@group.calendar.google.com'
 
-export async function getStaticProps() {
-  try {
-    const result = await fetchCalendar(CHINATOWN_SCHEDULE_ID)
-    return { props: { events: result, eventsError: null } }
-  } catch (error) {
-    return { props: { events: null, eventsError: parseErrorObject(error) } }
-  }
-}
+export default function Ch1Page() {
+  const { data, error = {} } = useSWRInfinite(
+    () => `api/schedule/${CHINATOWN_SCHEDULE_ID}`,
+    jsonFetcher,
+    {
+      revalidateIfStale: false,
+      revalidateOnFocus: false,
+      revalidateFirstPage: false,
+      revalidateOnReconnect: false,
+    },
+  )
 
-export default function Ch1Page({ events, eventsError }) {
+  if (!data && !error) {
+    return null
+  }
+
+  const events = data?.[0]
+  const eventsError = parseErrorObject(error)
+
   return (
     <div id="main">
       {events ? (
