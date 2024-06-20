@@ -6,6 +6,7 @@ import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 import { paypalConfig } from '../lib/paypal'
 
 import Navbar from '../components/Navbar'
+import Stream from '../components/Stream'
 
 import '@fortawesome/fontawesome-svg-core/styles.css'
 
@@ -22,6 +23,7 @@ function App({ Component, pageProps }) {
         <meta property="og:image" content="/img/kchungforfacebook.jpg" />
       </Head>
       <Navbar />
+      <Stream />
       <PayPalScriptProvider deferLoading options={paypalConfig}>
         <Component {...pageProps} />
       </PayPalScriptProvider>
