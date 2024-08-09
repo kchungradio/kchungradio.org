@@ -8,7 +8,8 @@ import 'intersection-observer' // polyfill for IE11
 import jsonFetcher from '../swr/jsonFetcher'
 import { slugify, unslugify } from '../lib/slugify'
 
-const s3 = 'http://archive.kchungradio.org/'
+const region = 'us-west-2'
+const s3 = `https://s3-${region}.amazonaws.com/archive.kchungradio.org/`
 
 function ArchivePage() {
   const router = useRouter()
