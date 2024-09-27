@@ -5,7 +5,16 @@ export default function ParticipatePage() {
     <div id="main">
       <h3>participate</h3>
       <p>anyone can be involved.</p>
-      <p>KCHUNG is a community non-profit that runs on volunteers, member dues, donations, and grants. if you are interested in having a radio show or helping out around the station, please email <a href="mailto:generalmanager@kchungradio.org">generalmanager@kchungradio.org</a>. kchung dj dues are $12 a month and can be set up as a <Link href="/donate">recurring donation</Link> via paypal.</p>
+      <p>
+        KCHUNG is a community non-profit that runs on volunteers, member dues,
+        donations, and grants. if you are interested in having a radio show or
+        helping out around the station, please email{' '}
+        <a href="mailto:generalmanager@kchungradio.org">
+          generalmanager@kchungradio.org
+        </a>
+        . kchung dj dues are $12 a month and can be set up as a{' '}
+        <Link href="/donate">recurring donation</Link> via paypal.
+      </p>
       <br />
       <h3>where to send your music</h3>
       <p>send your cds, tapes, records, and wax cylinders to:</p>
