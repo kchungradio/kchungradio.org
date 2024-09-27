@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js'
+
 import { handleCreateSubscription } from '../lib/paypal'
 
 function DonatePage() {

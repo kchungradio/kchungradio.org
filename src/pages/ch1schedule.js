@@ -1,8 +1,8 @@
-import React from 'react'
-import Calendar from '../components/Calendar/Calendar'
-import { parseErrorObject } from '../src/lib/parseErrorObject'
-import jsonFetcher from '../swr/jsonFetcher'
 import useSWRInfinite from 'swr/infinite'
+
+import Calendar from '../components/Calendar/Calendar'
+import { parseErrorObject } from '../lib/parseErrorObject'
+import jsonFetcher from '../lib/swr/jsonFetcher'
 
 const CHINATOWN_SCHEDULE_ID =
   'kchungradio.org_dal1nqjjuh3kvb65bjhdab545g@group.calendar.google.com'

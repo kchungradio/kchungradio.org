@@ -3,7 +3,7 @@ import useSWR from 'swr'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons'
 
-import jsonFetcher from '../swr/jsonFetcher'
+import jsonFetcher from '../lib/swr/jsonFetcher'
 
 function Player({ location, isPlaying, handlePlay, handlePause, metadata }) {
   return (

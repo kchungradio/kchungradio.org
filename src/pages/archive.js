@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { format, parseISO } from 'date-fns'
 import useSWRInfinite from 'swr/infinite'
 import useInfiniteScroll from 'react-infinite-scroll-hook'
 import 'intersection-observer' // polyfill for IE11
 
-import jsonFetcher from '../swr/jsonFetcher'
+import jsonFetcher from '../lib/swr/jsonFetcher'
 import { slugify, unslugify } from '../lib/slugify'
 
 const region = 'us-west-2'

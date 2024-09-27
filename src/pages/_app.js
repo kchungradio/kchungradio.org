@@ -1,15 +1,13 @@
 /* eslint-disable react/prop-types */
-import React from 'react'
+import { useEffect } from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import { PayPalScriptProvider } from '@paypal/react-paypal-js'
-import { paypalConfig } from '../lib/paypal'
-import { useEffect } from 'react'
-import { useRouter } from 'next/router'
-
 import posthog from 'posthog-js'
 import { PostHogProvider } from 'posthog-js/react'
 
+import { paypalConfig } from '../lib/paypal'
 import Navbar from '../components/Navbar'
 import Stream from '../components/Stream'
 
