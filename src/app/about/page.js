@@ -1,4 +1,4 @@
-function ParticipatePage() {
+export default function AboutPage() {
   return (
     <div id="main">
       <h2>about KCHUNG</h2>
@@ -27,5 +27,3 @@ function ParticipatePage() {
     </div>
   )
 }
-
-export default ParticipatePage

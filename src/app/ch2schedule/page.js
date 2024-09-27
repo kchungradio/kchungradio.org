@@ -1,15 +1,17 @@
+'use client'
+
 import useSWRInfinite from 'swr/infinite'
 
-import Calendar from '../components/Calendar/Calendar'
-import { parseErrorObject } from '../lib/parseErrorObject'
-import jsonFetcher from '../lib/swr/jsonFetcher'
+import Calendar from '../../components/Calendar/Calendar'
+import { parseErrorObject } from '../../lib/parseErrorObject'
+import jsonFetcher from '../../lib/swr/jsonFetcher'
 
-const CHINATOWN_SCHEDULE_ID =
-  'kchungradio.org_dal1nqjjuh3kvb65bjhdab545g@group.calendar.google.com'
+const MOCA_SCHEDULE_ID =
+  'c_a93f305736de4f5767385cd52ad13bbacddb68b92d5b69a6b8ec7b7bea3d6719@group.calendar.google.com'
 
-export default function Ch1Page() {
-  const { data, error = {} } = useSWRInfinite(
-    () => `api/schedule/${CHINATOWN_SCHEDULE_ID}`,
+export default function Ch2Page() {
+  const { data, error } = useSWRInfinite(
+    () => `api/schedule/${MOCA_SCHEDULE_ID}`,
     jsonFetcher,
     {
       revalidateIfStale: false,

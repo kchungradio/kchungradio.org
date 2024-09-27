@@ -1,3 +1,5 @@
+'use client'
+
 import { useRef, useState } from 'react'
 import useSWR from 'swr'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

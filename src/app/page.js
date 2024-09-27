@@ -1,7 +1,5 @@
 // TODO: redirect this page to /stream
 
-function HomePage() {
+export default function HomePage() {
   return <div>Home Page</div>
 }
-
-export default HomePage

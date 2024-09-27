@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
 
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 
 import CalendarCell from './CalendarCell'
+
+import './Calendar.css'
 
 export default function Calendar({ events }) {
   const now = new Date()
@@ -57,44 +59,6 @@ export default function Calendar({ events }) {
             ))
           : null}
       </div>
-
-      <style jsx>{`
-        .calendar {
-          width: 1071px;
-          font-family: courier, sans-serif;
-          background: red;
-          color: white;
-          margin: 0;
-          padding: 0;
-          font-size: 13px;
-        }
-        .day {
-          display: inline-block;
-          width: 148px;
-          padding-bottom: 1px;
-          text-align: center;
-        }
-        .blank {
-          display: inline-block;
-          height: 145px;
-          width: 148px;
-        }
-        a {
-          color: white;
-          cursor: pointer;
-        }
-        a:hover {
-          background: white;
-          color: red;
-          text-decoration: none;
-        }
-        a:link {
-          text-decoration: none;
-        }
-        a:visited {
-          text-decoration: none;
-        }
-      `}</style>
     </div>
   )
 }

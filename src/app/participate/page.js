@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-function ParticipatePage() {
+export default function ParticipatePage() {
   return (
     <div id="main">
       <h3>participate</h3>
@@ -50,5 +50,3 @@ function ParticipatePage() {
     </div>
   )
 }
-
-export default ParticipatePage
