@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic'
 import { config } from '@fortawesome/fontawesome-svg-core'
 
-import { PostHogProvider } from './providers'
+import { PostHogProvider } from '../components/PostHog/PostHogProvider'
 import Navbar from '../components/Navbar'
 import Stream from '../components/Stream'
 
@@ -16,7 +16,7 @@ export const metadata = {
 }
 
 const PostHogPageView = dynamic(
-  () => import('../components/PostHog/PageView'),
+  () => import('../components/PostHog/PostHogPageView'),
   {
     ssr: false,
   },
