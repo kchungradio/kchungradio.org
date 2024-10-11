@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { format, parseISO } from 'date-fns'
 import useSWRInfinite from 'swr/infinite'
 import useInfiniteScroll from 'react-infinite-scroll-hook'
@@ -10,14 +10,11 @@ import 'intersection-observer' // polyfill for IE11
 import jsonFetcher from '../../lib/swr/jsonFetcher'
 import { slugify, unslugify } from '../../lib/slugify'
 
-export const dynamic = 'force-dynamic'
-
 const region = 'us-west-2'
 const s3 = `https://s3-${region}.amazonaws.com/archive.kchungradio.org/`
 
-export default function ArchivePage() {
+export default function ArchivePage({ searchParams }) {
   const router = useRouter()
-  const searchParams = useSearchParams()
   const [searchInput, setSearchInput] = useState('')
   const [search, setSearch] = useState('')
   const [hasNextPage, setHasNextPage] = useState(true)
