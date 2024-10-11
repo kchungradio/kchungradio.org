@@ -10,6 +10,8 @@ import 'intersection-observer' // polyfill for IE11
 import jsonFetcher from '../../lib/swr/jsonFetcher'
 import { slugify, unslugify } from '../../lib/slugify'
 
+export const dynamic = 'force-dynamic'
+
 const region = 'us-west-2'
 const s3 = `https://s3-${region}.amazonaws.com/archive.kchungradio.org/`
 
