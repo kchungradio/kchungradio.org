@@ -1,31 +1,35 @@
-import React, { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+'use client'
+
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { format, parseISO } from 'date-fns'
 import useSWRInfinite from 'swr/infinite'
 import useInfiniteScroll from 'react-infinite-scroll-hook'
 import 'intersection-observer' // polyfill for IE11
 
-import jsonFetcher from '../swr/jsonFetcher'
-import { slugify, unslugify } from '../lib/slugify'
+import jsonFetcher from '../../lib/swr/jsonFetcher'
+import { slugify, unslugify } from '../../lib/slugify'
+
+export const dynamic = 'force-dynamic'
 
 const region = 'us-west-2'
 const s3 = `https://s3-${region}.amazonaws.com/archive.kchungradio.org/`
 
-function ArchivePage() {
+export default function ArchivePage({ searchParams }) {
   const router = useRouter()
   const [searchInput, setSearchInput] = useState('')
   const [search, setSearch] = useState('')
   const [hasNextPage, setHasNextPage] = useState(true)
 
+  const querySearch = searchParams.search
   useEffect(() => {
-    const querySearch = router.query.search
     let search
     if (querySearch) {
       search = unslugify(decodeURIComponent(querySearch))
     }
     setSearchInput(search ?? '')
     setSearch(search ?? '')
-  }, [router.query])
+  }, [querySearch])
 
   const { data, error, setSize, isValidating } = useSWRInfinite(
     (index) => {
@@ -49,7 +53,7 @@ function ArchivePage() {
           setHasNextPage(false)
         }
       },
-    }
+    },
   )
 
   function handleLoadMore() {
@@ -153,5 +157,3 @@ function ArchivePage() {
     </div>
   )
 }
-
-export default ArchivePage
