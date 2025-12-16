@@ -64,6 +64,7 @@ function Navbar() {
           </span>
         </div>
       </div>
+      <p>KCHUNG Radio thanks <a href="https://theresonancefoundation.org/">The Resonance Foundation</a> for their generous support.</p>
     </>
   )
 }
