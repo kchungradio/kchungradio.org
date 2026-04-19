@@ -1,7 +1,8 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import useSWR from 'swr'
+//import SocketIo from 'socket.io-client' <-- for future dev
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons'
 
@@ -59,13 +60,64 @@ function Stream() {
     setIsPlayingMoca(true)
   }
 
-  const { data: liveInfoCh1 } = useSWR(
-    'https://kchungradio.airtime.pro/api/live-info-v2',
-    jsonFetcher,
+  // // Add state for Radio Cult metadata
+  // const [ch1metadata, setCh1metadata] = useState('')
+
+  // useEffect(() => {
+  //   const io = SocketIo('https://api.radiocult.fm', {
+  //     auth: {
+  //       'x-api-key': 'pk_2b3e0601b08845bd895ef1f5c8c19452',
+  //     },
+  //     transports: ['websocket'],
+  //     query: {
+  //       stationId: 'kchung-radio-01e54a81',
+  //     },
+  //   })
+
+  //   io.on('connect_error', (err) => {
+  //   console.error('Socket connection error:', err)
+  // })
+
+  //   io.on('player-metadata', ({ status, content, metadata }) => {
+  //     // You may want to adjust this depending on the structure of metadata
+  //     console.log('player-metadata event:', { status, content, metadata }) // <-- Add this line
+  //     setCh1metadata(metadata?.title || content || '')
+  //   })
+
+  //   return () => {
+  //     io.disconnect()
+  //   }
+  // }, [])  
+
+  const fetcherWithApiKey = (url) =>
+  fetch(url, {
+    headers: { 'x-api-key': 'pk_2b3e0601b08845bd895ef1f5c8c19452' }
+  }).then(res => res.json())
+
+  const { data: liveShow } = useSWR(
+    'https://api.radiocult.fm/api/station/kchung-radio-01e54a81/schedule/live',
+    fetcherWithApiKey
   )
-  const ch1metadata =
-    liveInfoCh1?.tracks?.current?.metadata?.filepath ||
-    liveInfoCh1?.shows?.current?.name
+  console.log('liveShow:', liveShow)
+
+  const ch1metadata = liveShow?.result?.content?.title || liveShow?.result?.metadata?.title || 'No show live'
+
+  const PUBLIC_STUDIO_ID = '09d795c5-2b49-4084-98d9-46fbb07cc4b3' // <-- replace with actual ID
+  const CHINATOWN_STUDIO_ID = 'd12662d4-4a3f-4c3e-8c8e-9b3d4b06cc81'
+  
+  let liveStatus = 'Loading...'
+  if (liveShow?.result?.status === 'schedule') {
+    const artistIDs = liveShow?.result?.content?.artistIds || []
+    if (artistIDs.includes(PUBLIC_STUDIO_ID)) {
+      liveStatus = 'live from moca geffen'
+    } else if (artistIDs.includes(CHINATOWN_STUDIO_ID)) {
+      liveStatus = 'live from chinatown'
+    } else {
+      liveStatus = 'live'
+    }
+  } else {
+    liveStatus = 'off-air'
+  }
 
   const { data: liveInfoCh2 } = useSWR(
     'https://kchungpublic.airtime.pro/api/live-info-v2',
@@ -79,33 +131,17 @@ function Stream() {
     <div id="main">
       <div className="player">
         <Player
-          location="chinatown"
+          location={liveStatus}
           isPlaying={isPlayingChinatown}
           handlePlay={handlePlayClickMain}
           handlePause={handlePauseClickMain}
           metadata={ch1metadata}
         />
-
-        <Player
-          location="moca geffen"
-          isPlaying={isPlayingMoca}
-          handlePlay={handlePlayClickPublic}
-          handlePause={handlePauseClickPublic}
-          metadata={ch2metadata}
-        />
       </div>
 
       <audio ref={audioMainRef} id="player-chinatown" preload="none">
         <source
-          src="https://kchungradio.out.airtime.pro/kchungradio_a"
-          type="audio/mp3"
-        />
-        Your browser does not support the audio element.
-      </audio>
-
-      <audio ref={audioPublicRef} id="player-public" preload="none">
-        <source
-          src="https://kchungpublic.out.airtime.pro/kchungpublic_a"
+          src="https://kchung-radio-01e54a81.radiocult.fm/stream"
           type="audio/mp3"
         />
         Your browser does not support the audio element.
