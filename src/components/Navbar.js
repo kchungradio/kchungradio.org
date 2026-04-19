@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import Image from 'next/image'
+import Stream from './Stream'
 
 function Navbar() {
   return (
@@ -18,6 +19,7 @@ function Navbar() {
           </picture>
         </Link>
         <span>1630am chinatown los angeles</span>
+        <Stream/>
       </div>
       <div id="nav">
         <div id="left">
