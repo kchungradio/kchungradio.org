@@ -128,7 +128,7 @@ function Stream() {
     liveInfoCh2?.shows?.current?.name
 
   return (
-    <div id="main">
+    
       <div className="player">
         <Player
           location={liveStatus}
@@ -137,7 +137,6 @@ function Stream() {
           handlePause={handlePauseClickMain}
           metadata={ch1metadata}
         />
-      </div>
 
       <audio ref={audioMainRef} id="player-chinatown" preload="none">
         <source

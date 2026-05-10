@@ -88,7 +88,7 @@ p a:link {
 /* Main */
 
 #main {
-  margin: 0;
+  margin: auto;
   width: 90%;
 }
 
@@ -126,7 +126,7 @@ p a:link {
     padding: 0 1em;
   }
   .player > div {
-    margin: 1em 0;
+    margin: 0;
     width: 100%;
   }
 }
