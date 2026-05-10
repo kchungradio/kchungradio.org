@@ -36,9 +36,7 @@ export default function RootLayout({ children }) {
           <main style={{ flex: 1 }}>
           <Navbar />
           <PostHogPageView />
-          <div style={{margin : "auto"}}>
           {children}
-          </div>
           </main>
           <Footer />
           </div>

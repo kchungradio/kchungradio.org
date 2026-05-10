@@ -1,5 +1,5 @@
 'use client'
-
+//OLD CALENDAR, kept for posterity
 import useSWRInfinite from 'swr/infinite'
 
 import Calendar from '../../components/Calendar/Calendar'

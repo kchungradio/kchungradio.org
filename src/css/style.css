@@ -60,7 +60,7 @@ p a:link {
 }
 
 #nav a {
-  margin-right: 1em;
+  margin-right: 2em;
 }
 
 #right span a {
@@ -175,7 +175,12 @@ p a:link {
   display: none;
   opacity: 0;
 }
+/* -------------------------------------------------------------------------- */
+/* Schedule */
 
+#schedule {
+  margin-top: 20px;
+}
 /* -------------------------------------------------------------------------- */
 /* External Widgets */
 

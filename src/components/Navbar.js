@@ -25,8 +25,7 @@ function Navbar() {
       <div id="nav">
         <div id="left">
           <NavLink href="/stream">stream</NavLink>
-          <NavLink href="/ch1schedule">ch1 schedule</NavLink>
-          <NavLink href="/ch2schedule">ch2 schedule</NavLink>
+          <NavLink href="/schedule">schedule</NavLink>
           <NavLink href="/archive">archive</NavLink>
           <NavLink href="/participate">participate</NavLink>
           <NavLink href="/donate">donate</NavLink>
