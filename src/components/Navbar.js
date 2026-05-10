@@ -19,6 +19,7 @@ function Navbar() {
           </picture>
         </Link>
         <span>1630am chinatown los angeles</span>
+        
         <Stream/>
       </div>
       <div id="nav">
@@ -66,7 +67,6 @@ function Navbar() {
           </span>
         </div>
       </div>
-      <p>KCHUNG Radio thanks <a href="https://theresonancefoundation.org/" target="blank">The Resonance Foundation</a> for their generous support.</p>
     </>
   )
 }

@@ -88,7 +88,7 @@ p a:link {
 /* Main */
 
 #main {
-  margin: 1em auto;
+  margin: 0;
   width: 90%;
 }
 
@@ -113,7 +113,8 @@ p a:link {
   width: 50%;
   align-items: center;
   padding: 0.5em 1em;
-  margin: 0 1em;
+  margin-top: 10px;
+  margin-bottom: 10px;
   border: solid;
   border-width: 2px;
   border-radius: 3px;
