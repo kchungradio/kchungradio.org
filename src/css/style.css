@@ -103,6 +103,7 @@ p a:link {
 /* -------------------------------------------------------------------------- */
 /* Stream Player */
 
+
 .player {
   display: flex;
 }
@@ -145,6 +146,7 @@ p a:link {
   margin: 0 auto;
   margin-top: 2em;
   width: 100%;
+  border: 2px solid white;
 }
 
 .player-controls {
@@ -158,6 +160,41 @@ p a:link {
 #trackName,
 #showName {
   overflow-wrap: anywhere;
+}
+
+/* stream page formatting */
+.stream-layout {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.now-playing {
+  flex: 1 1 0;
+  min-width: 300px;
+  max-width: 600px;
+}
+
+.chatbox {
+  flex: 1 1 0;
+  min-width: 300px;
+  max-width: 600px;
+}
+
+/* Stack on mobile */
+@media (max-width: 900px) {
+  .stream-layout {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .now-playing{
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .chatbox {
+    max-width: 100%;
+    min-width: 0;
+  }
 }
 
 /* chat widget */
