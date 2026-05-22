@@ -60,35 +60,6 @@ function Stream() {
     setIsPlayingMoca(true)
   }
 
-  // // Add state for Radio Cult metadata
-  // const [ch1metadata, setCh1metadata] = useState('')
-
-  // useEffect(() => {
-  //   const io = SocketIo('https://api.radiocult.fm', {
-  //     auth: {
-  //       'x-api-key': 'pk_2b3e0601b08845bd895ef1f5c8c19452',
-  //     },
-  //     transports: ['websocket'],
-  //     query: {
-  //       stationId: 'kchung-radio-01e54a81',
-  //     },
-  //   })
-
-  //   io.on('connect_error', (err) => {
-  //   console.error('Socket connection error:', err)
-  // })
-
-  //   io.on('player-metadata', ({ status, content, metadata }) => {
-  //     // You may want to adjust this depending on the structure of metadata
-  //     console.log('player-metadata event:', { status, content, metadata }) // <-- Add this line
-  //     setCh1metadata(metadata?.title || content || '')
-  //   })
-
-  //   return () => {
-  //     io.disconnect()
-  //   }
-  // }, [])
-
   const fetcherWithApiKey = (url) =>
     fetch(url, {
       headers: { 'x-api-key': 'pk_2b3e0601b08845bd895ef1f5c8c19452' },
