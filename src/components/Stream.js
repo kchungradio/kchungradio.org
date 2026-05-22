@@ -6,7 +6,7 @@ import useSWR from 'swr'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons'
 
-import jsonFetcher from '../lib/swr/jsonFetcher'
+import radiocultJsonFetcher from '../lib/swr/radiocultJsonFetcher'
 
 function Player({ location, isPlaying, handlePlay, handlePause, metadata }) {
   return (
@@ -60,18 +60,13 @@ function Stream() {
     setIsPlayingMoca(true)
   }
 
-  const fetcherWithApiKey = (url) =>
-    fetch(url, {
-      headers: { 'x-api-key': 'pk_2b3e0601b08845bd895ef1f5c8c19452' },
-    }).then((res) => res.json())
 
   const { data: liveShow } = useSWR(
-    'https://api.radiocult.fm/api/station/kchung-radio-01e54a81/schedule/live',
-    fetcherWithApiKey,
+    radiocultJsonFetcher
   )
   console.log('liveShow:', liveShow)
 
-  const ch1metadata =
+  const liveMetadata =
     liveShow?.result?.content?.title ||
     liveShow?.result?.metadata?.title ||
     'No show live'
@@ -93,14 +88,6 @@ function Stream() {
     liveStatus = 'off-air'
   }
 
-  const { data: liveInfoCh2 } = useSWR(
-    'https://kchungpublic.airtime.pro/api/live-info-v2',
-    jsonFetcher,
-  )
-  const ch2metadata =
-    liveInfoCh2?.tracks?.current?.metadata?.filepath ||
-    liveInfoCh2?.shows?.current?.name
-
   return (
     <div className="player">
       <Player
@@ -108,7 +95,7 @@ function Stream() {
         isPlaying={isPlayingChinatown}
         handlePlay={handlePlayClickMain}
         handlePause={handlePauseClickMain}
-        metadata={ch1metadata}
+        metadata={liveMetadata}
       />
 
       <audio ref={audioMainRef} id="player-chinatown" preload="none">
