@@ -68,26 +68,35 @@ function Stream() {
 
   console.log('liveShow:', liveShow)
 
-  const liveMetadata =
-    liveShow?.result?.content?.title ||
-    liveShow?.result?.metadata?.title ||
-    'No show live'
+  //This pulls from the track metadata in audio hijack at each station
+  //set public to livePublic
+  //set chinatown to liveChinatown
+  const isLive =
+    liveShow?.result?.metadata?.title
+  
 
   const PUBLIC_STUDIO_ID = '09d795c5-2b49-4084-98d9-46fbb07cc4b3' // <-- replace with actual ID
   const CHINATOWN_STUDIO_ID = 'd12662d4-4a3f-4c3e-8c8e-9b3d4b06cc81'
 
   let liveStatus = 'Loading...'
+  let showTitle = 'Loading...'
+  //once audiohijack metadata is set, add logic for checking metadata
   if (liveShow?.result?.status === 'schedule') {
     const artistIDs = liveShow?.result?.content?.artistIds || []
+    showTitle = liveShow?.result?.content?.title
     if (artistIDs.includes(PUBLIC_STUDIO_ID)) {
       liveStatus = 'live from moca geffen'
+      
     } else if (artistIDs.includes(CHINATOWN_STUDIO_ID)) {
       liveStatus = 'live from chinatown'
     } else {
       liveStatus = 'live'
     }
-  } else {
+  } 
+  
+  else {
     liveStatus = 'off-air'
+    showTitle = liveShow?.result?.metadata?.title || "No show"
   }
 
   return (
@@ -97,7 +106,7 @@ function Stream() {
         isPlaying={isPlayingChinatown}
         handlePlay={handlePlayClickMain}
         handlePause={handlePauseClickMain}
-        metadata={liveMetadata}
+        metadata={showTitle}
       />
 
       <audio ref={audioMainRef} id="player-chinatown" preload="none">
