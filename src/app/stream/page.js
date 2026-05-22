@@ -3,10 +3,7 @@
 import { useState, useEffect } from 'react'
 import useSWR from 'swr'
 
-const fetcherWithApiKey = (url) =>
-  fetch(url, {
-    headers: { 'x-api-key': 'pk_2b3e0601b08845bd895ef1f5c8c19452' },
-  }).then((res) => res.json())
+import radiocultJsonFetcher from '../../lib/swr/radiocultJsonFetcher.js'
 
 const PUBLIC_STUDIO_ID = '09d795c5-2b49-4084-98d9-46fbb07cc4b3'
 const CHINATOWN_STUDIO_ID = 'd12662d4-4a3f-4c3e-8c8e-9b3d4b06cc81'
@@ -28,9 +25,7 @@ function ArtistList({ artistIds }) {
     }
     Promise.all(
       filteredIds.map((id) =>
-        fetcherWithApiKey(
-          `https://api.radiocult.fm/api/station/kchung-radio-01e54a81/artists/${id}`,
-        )
+        radiocultJsonFetcher(`/artists/${id}`)
           .then((data) => ({ ...data.artist, id }))
           .catch(() => null),
       ),
@@ -86,8 +81,8 @@ function Chatbox() {
 
 function NowPlaying() {
   const { data: liveShow } = useSWR(
-    'https://api.radiocult.fm/api/station/kchung-radio-01e54a81/schedule/live',
-    fetcherWithApiKey,
+     '/schedule/live',
+     radiocultJsonFetcher,
   )
   console.log('liveShow:', liveShow)
 

@@ -6,7 +6,7 @@ import useSWR from 'swr'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons'
 
-import radiocultJsonFetcher from '../lib/swr/radiocultJsonFetcher'
+import radiocultJsonFetcher from '../lib/swr/radiocultJsonFetcher.js'
 
 function Player({ location, isPlaying, handlePlay, handlePause, metadata }) {
   return (
@@ -62,8 +62,10 @@ function Stream() {
 
 
   const { data: liveShow } = useSWR(
-    radiocultJsonFetcher
+    '/schedule/live',
+    radiocultJsonFetcher,
   )
+
   console.log('liveShow:', liveShow)
 
   const liveMetadata =
