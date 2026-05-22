@@ -19,8 +19,8 @@ function Navbar() {
           </picture>
         </Link>
         <span>1630am chinatown los angeles</span>
-        
-        <Stream/>
+
+        <Stream />
       </div>
       <div id="nav">
         <div id="left">

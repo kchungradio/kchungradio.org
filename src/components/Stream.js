@@ -87,24 +87,27 @@ function Stream() {
   //   return () => {
   //     io.disconnect()
   //   }
-  // }, [])  
+  // }, [])
 
   const fetcherWithApiKey = (url) =>
-  fetch(url, {
-    headers: { 'x-api-key': 'pk_2b3e0601b08845bd895ef1f5c8c19452' }
-  }).then(res => res.json())
+    fetch(url, {
+      headers: { 'x-api-key': 'pk_2b3e0601b08845bd895ef1f5c8c19452' },
+    }).then((res) => res.json())
 
   const { data: liveShow } = useSWR(
     'https://api.radiocult.fm/api/station/kchung-radio-01e54a81/schedule/live',
-    fetcherWithApiKey
+    fetcherWithApiKey,
   )
   console.log('liveShow:', liveShow)
 
-  const ch1metadata = liveShow?.result?.content?.title || liveShow?.result?.metadata?.title || 'No show live'
+  const ch1metadata =
+    liveShow?.result?.content?.title ||
+    liveShow?.result?.metadata?.title ||
+    'No show live'
 
   const PUBLIC_STUDIO_ID = '09d795c5-2b49-4084-98d9-46fbb07cc4b3' // <-- replace with actual ID
   const CHINATOWN_STUDIO_ID = 'd12662d4-4a3f-4c3e-8c8e-9b3d4b06cc81'
-  
+
   let liveStatus = 'Loading...'
   if (liveShow?.result?.status === 'schedule') {
     const artistIDs = liveShow?.result?.content?.artistIds || []
@@ -128,15 +131,14 @@ function Stream() {
     liveInfoCh2?.shows?.current?.name
 
   return (
-    
-      <div className="player">
-        <Player
-          location={liveStatus}
-          isPlaying={isPlayingChinatown}
-          handlePlay={handlePlayClickMain}
-          handlePause={handlePauseClickMain}
-          metadata={ch1metadata}
-        />
+    <div className="player">
+      <Player
+        location={liveStatus}
+        isPlaying={isPlayingChinatown}
+        handlePlay={handlePlayClickMain}
+        handlePause={handlePauseClickMain}
+        metadata={ch1metadata}
+      />
 
       <audio ref={audioMainRef} id="player-chinatown" preload="none">
         <source
