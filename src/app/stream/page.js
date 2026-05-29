@@ -4,9 +4,7 @@ import { useState, useEffect } from 'react'
 import useSWR from 'swr'
 
 import radiocultJsonFetcher from '../../lib/swr/radiocultJsonFetcher.js'
-
-const PUBLIC_STUDIO_ID = '09d795c5-2b49-4084-98d9-46fbb07cc4b3'
-const CHINATOWN_STUDIO_ID = 'd12662d4-4a3f-4c3e-8c8e-9b3d4b06cc81'
+import { STUDIO_IDS } from '../../lib/config.js'
 
 function ArtistList({ artistIds }) {
   const [artists, setArtists] = useState([])
@@ -17,7 +15,7 @@ function ArtistList({ artistIds }) {
       return
     }
     const filteredIds = artistIds.filter(
-      (id) => id !== PUBLIC_STUDIO_ID && id !== CHINATOWN_STUDIO_ID,
+      (id) => id !== STUDIO_IDS.PUBLIC && id !== STUDIO_IDS.CHINATOWN,
     )
     if (filteredIds.length === 0) {
       setArtists([])
@@ -86,7 +84,6 @@ function NowPlaying() {
   )
   console.log('liveShow:', liveShow)
 
-  // Adjust these property paths based on the actual API response
   const show = liveShow?.result?.content
   const artists = show?.artistIds
   const description =

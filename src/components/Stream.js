@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons'
 
 import radiocultJsonFetcher from '../lib/swr/radiocultJsonFetcher.js'
+import { STUDIO_IDS } from '../lib/config.js'
+
 
 function Player({ location, isPlaying, handlePlay, handlePause, metadata }) {
   return (
@@ -75,8 +77,6 @@ function Stream() {
     liveShow?.result?.metadata?.title
   
 
-  const PUBLIC_STUDIO_ID = '09d795c5-2b49-4084-98d9-46fbb07cc4b3' // <-- replace with actual ID
-  const CHINATOWN_STUDIO_ID = 'd12662d4-4a3f-4c3e-8c8e-9b3d4b06cc81'
 
   let liveStatus = 'Loading...'
   let showTitle = 'Loading...'
@@ -84,10 +84,10 @@ function Stream() {
   if (liveShow?.result?.status === 'schedule') {
     const artistIDs = liveShow?.result?.content?.artistIds || []
     showTitle = liveShow?.result?.content?.title
-    if (artistIDs.includes(PUBLIC_STUDIO_ID)) {
+    if (artistIDs.includes(STUDIO_IDS.PUBLIC)) {
       liveStatus = 'live from moca geffen'
       
-    } else if (artistIDs.includes(CHINATOWN_STUDIO_ID)) {
+    } else if (artistIDs.includes(STUDIO_IDS.CHINATOWN)) {
       liveStatus = 'live from chinatown'
     } else {
       liveStatus = 'live'
