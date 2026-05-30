@@ -1,11 +1,14 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import useSWR from 'swr'
+//import SocketIo from 'socket.io-client' <-- for future dev
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons'
 
-import jsonFetcher from '../lib/swr/jsonFetcher'
+import radiocultJsonFetcher from '../lib/swr/radiocultJsonFetcher.js'
+import { STUDIO_IDS } from '../lib/config.js'
+
 
 function Player({ location, isPlaying, handlePlay, handlePause, metadata }) {
   return (
@@ -59,53 +62,56 @@ function Stream() {
     setIsPlayingMoca(true)
   }
 
-  const { data: liveInfoCh1 } = useSWR(
-    'https://kchungradio.airtime.pro/api/live-info-v2',
-    jsonFetcher,
-  )
-  const ch1metadata =
-    liveInfoCh1?.tracks?.current?.metadata?.filepath ||
-    liveInfoCh1?.shows?.current?.name
 
-  const { data: liveInfoCh2 } = useSWR(
-    'https://kchungpublic.airtime.pro/api/live-info-v2',
-    jsonFetcher,
+  const { data: liveShow } = useSWR(
+    '/schedule/live',
+    radiocultJsonFetcher,
   )
-  const ch2metadata =
-    liveInfoCh2?.tracks?.current?.metadata?.filepath ||
-    liveInfoCh2?.shows?.current?.name
+
+  console.log('liveShow:', liveShow)
+
+  //This pulls from the track metadata in audio hijack at each station
+  //set public to livePublic
+  //set chinatown to liveChinatown
+  const isLive =
+    liveShow?.result?.metadata?.title
+  
+
+
+  let liveStatus = 'Loading...'
+  let showTitle = 'Loading...'
+  //once audiohijack metadata is set, add logic for checking metadata
+  if (liveShow?.result?.status === 'schedule') {
+    const artistIDs = liveShow?.result?.content?.artistIds || []
+    showTitle = liveShow?.result?.content?.title
+    if (artistIDs.includes(STUDIO_IDS.PUBLIC)) {
+      liveStatus = 'live from moca geffen'
+      
+    } else if (artistIDs.includes(STUDIO_IDS.CHINATOWN)) {
+      liveStatus = 'live from chinatown'
+    } else {
+      liveStatus = 'live'
+    }
+  } 
+  
+  else {
+    liveStatus = 'off-air'
+    showTitle = liveShow?.result?.metadata?.title || "No show"
+  }
 
   return (
-    <div id="main">
-      <div className="player">
-        <Player
-          location="chinatown"
-          isPlaying={isPlayingChinatown}
-          handlePlay={handlePlayClickMain}
-          handlePause={handlePauseClickMain}
-          metadata={ch1metadata}
-        />
-
-        <Player
-          location="moca geffen"
-          isPlaying={isPlayingMoca}
-          handlePlay={handlePlayClickPublic}
-          handlePause={handlePauseClickPublic}
-          metadata={ch2metadata}
-        />
-      </div>
+    <div className="player">
+      <Player
+        location={liveStatus}
+        isPlaying={isPlayingChinatown}
+        handlePlay={handlePlayClickMain}
+        handlePause={handlePauseClickMain}
+        metadata={showTitle}
+      />
 
       <audio ref={audioMainRef} id="player-chinatown" preload="none">
         <source
-          src="https://kchungradio.out.airtime.pro/kchungradio_a"
-          type="audio/mp3"
-        />
-        Your browser does not support the audio element.
-      </audio>
-
-      <audio ref={audioPublicRef} id="player-public" preload="none">
-        <source
-          src="https://kchungpublic.out.airtime.pro/kchungpublic_a"
+          src="https://kchung-radio-01e54a81.radiocult.fm/stream"
           type="audio/mp3"
         />
         Your browser does not support the audio element.

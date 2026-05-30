@@ -60,7 +60,7 @@ p a:link {
 }
 
 #nav a {
-  margin-right: 1em;
+  margin-right: 2em;
 }
 
 #right span a {
@@ -88,7 +88,7 @@ p a:link {
 /* Main */
 
 #main {
-  margin: 1em auto;
+  margin: auto;
   width: 90%;
 }
 
@@ -103,6 +103,7 @@ p a:link {
 /* -------------------------------------------------------------------------- */
 /* Stream Player */
 
+
 .player {
   display: flex;
 }
@@ -113,7 +114,8 @@ p a:link {
   width: 50%;
   align-items: center;
   padding: 0.5em 1em;
-  margin: 0 1em;
+  margin-top: 10px;
+  margin-bottom: 10px;
   border: solid;
   border-width: 2px;
   border-radius: 3px;
@@ -125,7 +127,7 @@ p a:link {
     padding: 0 1em;
   }
   .player > div {
-    margin: 1em 0;
+    margin: 1em auto;
     width: 100%;
   }
 }
@@ -144,6 +146,7 @@ p a:link {
   margin: 0 auto;
   margin-top: 2em;
   width: 100%;
+  border: 2px solid white;
 }
 
 .player-controls {
@@ -157,6 +160,41 @@ p a:link {
 #trackName,
 #showName {
   overflow-wrap: anywhere;
+}
+
+/* stream page formatting */
+.stream-layout {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.now-playing {
+  flex: 1 1 0;
+  min-width: 300px;
+  max-width: 600px;
+}
+
+.chatbox {
+  flex: 1 1 0;
+  min-width: 300px;
+  max-width: 600px;
+}
+
+/* Stack on mobile */
+@media (max-width: 900px) {
+  .stream-layout {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .now-playing{
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .chatbox {
+    max-width: 100%;
+    min-width: 0;
+  }
 }
 
 /* chat widget */
@@ -174,7 +212,12 @@ p a:link {
   display: none;
   opacity: 0;
 }
+/* -------------------------------------------------------------------------- */
+/* Schedule */
 
+#schedule {
+  margin-top: 20px;
+}
 /* -------------------------------------------------------------------------- */
 /* External Widgets */
 

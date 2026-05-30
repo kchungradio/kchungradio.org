@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import Image from 'next/image'
+import Stream from './Stream'
 
 function Navbar() {
   return (
@@ -18,12 +19,13 @@ function Navbar() {
           </picture>
         </Link>
         <span>1630am chinatown los angeles</span>
+
+        <Stream />
       </div>
       <div id="nav">
         <div id="left">
           <NavLink href="/stream">stream</NavLink>
-          <NavLink href="/ch1schedule">ch1 schedule</NavLink>
-          <NavLink href="/ch2schedule">ch2 schedule</NavLink>
+          <NavLink href="/schedule">schedule</NavLink>
           <NavLink href="/archive">archive</NavLink>
           <NavLink href="/participate">participate</NavLink>
           <NavLink href="/donate">donate</NavLink>
@@ -64,7 +66,6 @@ function Navbar() {
           </span>
         </div>
       </div>
-      <p>KCHUNG Radio thanks <a href="https://theresonancefoundation.org/" target="blank">The Resonance Foundation</a> for their generous support.</p>
     </>
   )
 }
